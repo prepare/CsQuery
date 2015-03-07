@@ -187,6 +187,9 @@
     <Compile Include="Dom\Implementation\HtmlElements\HTMLLabelElement.cs" />
     <Compile Include="Dom\Implementation\NodeEventArgs.cs" />
     <Compile Include="Dom\Implementation\StyleSheet.cs" />
+    <Compile Include="HtmlParser.ParserAndTreeBuilders\Parser.cs" />
+    <Compile Include="HtmlParser.ParserAndTreeBuilders\SimpleHtmlParser.cs" />
+    <Compile Include="HtmlParser.ParserAndTreeBuilders\XmlTreeBuilder.cs" />
     <Compile Include="Implementation\IReadOnlyCollection.cs" />
     <Compile Include="Dom\HtmlElements\IHTMLFormElement.cs" />
     <Compile Include="Dom\HtmlElements\IHTMLLabelElement.cs" />
@@ -491,9 +494,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="HtmlParser2\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="MyHtmlParserSharp\HtmlParserSharp\HtmlParserSharp.csproj">
       <Project>{FD150915-D34F-436A-92C1-80AA505DA754}</Project>
@@ -521,7 +522,7 @@ xcopy $(TargetDir)CsQuery.xml $(SolutionDir)..\Distribution /Y
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UseGlobalSettings="False" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_ConfigurationName="Any" BuildVersion_AssemblyInfoFilename="Properties\AssemblyInfo.cs" BuildVersion_BuildVersioningStyle="None.None.None.Increment" BuildVersion_UpdateFileVersion="False" />
+      <UserProperties BuildVersion_UpdateFileVersion="False" BuildVersion_BuildVersioningStyle="None.None.None.Increment" BuildVersion_AssemblyInfoFilename="Properties\AssemblyInfo.cs" BuildVersion_ConfigurationName="Any" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UseGlobalSettings="False" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -37,8 +37,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using HtmlParserSharp.Common;
-using System.Xml;
+using HtmlParserSharp.Common; 
 using System.Text;
 
 #pragma warning disable 1591 // Missing XML comment
@@ -331,7 +330,7 @@ namespace HtmlParserSharp.Core
 			Start(fragment);
             //charBuffer = new StringBuilder(10240);
             charBuffer = new StringBuilder();
-            charBuffer.Clear();
+            charBuffer.Length = 0;
 			framesetOk = true;
 			if (fragment)
 			{
@@ -5816,7 +5815,7 @@ namespace HtmlParserSharp.Core
 					{
 						// reconstructing gave us a new current node
 						AppendCharacters(CurrentNode(), charBuffer);
-                        charBuffer.Clear();
+                        charBuffer.Length = 0;
 						return;
 					}
 					int eltPos = FindLastOrRoot(DispatchGroup.TABLE);
@@ -5825,15 +5824,15 @@ namespace HtmlParserSharp.Core
 					if (eltPos == 0)
 					{
 						AppendCharacters(elt, charBuffer);
-                        charBuffer.Clear();
+                        charBuffer.Length = 0;
 						return;
 					}
 					InsertFosterParentedCharacters(charBuffer,elt, stack[eltPos - 1].node);
-                    charBuffer.Clear();
+                    charBuffer.Length = 0;
 					return;
 				}
 				AppendCharacters(CurrentNode(), charBuffer);
-                charBuffer.Clear();
+                charBuffer.Length = 0;
 			}
 		}
 

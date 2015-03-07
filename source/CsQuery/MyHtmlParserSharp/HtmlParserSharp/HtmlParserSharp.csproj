@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HtmlParserSharp</RootNamespace>
     <AssemblyName>HtmlParser</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
@@ -27,6 +27,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,7 +51,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\AttributeName.cs" />
@@ -65,7 +65,6 @@
     <Compile Include="Core\ElementName.cs" />
     <Compile Include="Core\HtmlAttributes.cs" />
     <Compile Include="Core\InsertionMode.cs" />
-    <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Core\ILocator.cs" />
     <Compile Include="Common\ITokenHandler.cs" />
@@ -85,8 +84,6 @@
     <Compile Include="Core\TreeBuilder.cs" />
     <Compile Include="Core\TreeBuilderConstants.cs" />
     <Compile Include="Core\UTF16Buffer.cs" />
-    <Compile Include="TreeBuilders\SimpleHtmlParser.cs" />
-    <Compile Include="TreeBuilders\XmlTreeBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

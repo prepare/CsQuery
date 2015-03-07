@@ -31,7 +31,7 @@ namespace HtmlParserSharp
         /// The populated TokenHandler
         /// </returns>
 
-        public static T Create<T>(string html) where T: ITokenHandler, new()
+        public static T Create<T>(string html) where T : ITokenHandler, new()
         {
             T tokenHandler = new T();
             var parser = new Parser(tokenHandler);
@@ -47,7 +47,7 @@ namespace HtmlParserSharp
         private Tokenizer Tokenizer;
         private ITokenHandler TreeBuilder;
 
-        
+
 
         public void Parse(string html)
         {

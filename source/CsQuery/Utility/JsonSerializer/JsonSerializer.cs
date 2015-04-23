@@ -130,57 +130,59 @@ namespace CsQuery.Utility
 
         private void valueToJSON(object value)
         {
-            if (Objects.IsImmutable(value))
-            {
-                sb.Append(Serializer.Serialize(value));
-            }
-            else if (IsDictionary(value))
-            {
-                sb.Append("{");
-                bool first = true;
-                foreach (dynamic item in (IEnumerable)value)
-                {
-                    if (first)
-                    {
-                        first = false;
-                    }
-                    else
-                    {
-                        sb.Append(",");
-                    }
-                    sb.Append("\"" + item.Key.ToString() + "\":" + JSON.ToJSON(item.Value));
-                }
-                sb.Append("}");
-            }
-            else if (value is IEnumerable)
-            {
-                sb.Append("[");
-                bool first = true;
-                foreach (object obj in (IEnumerable)value)
-                {
-                    if (first)
-                    {
-                        first = false;
-                    }
-                    else
-                    {
-                        sb.Append(",");
-                    }
-                    if (Objects.IsImmutable(obj))
-                    {
-                        valueToJSON(obj);
-                    }
-                    else
-                    {
-                        SerializeImpl(obj);
-                    }
-                }
-                sb.Append("]");
-            }
-            else
-            {
-                throw new InvalidOperationException("Serializer error: valueToJson called for an object");
-            }
+            //TODO: reimplement here
+            throw new NotSupportedException();
+            //if (Objects.IsImmutable(value))
+            //{
+            //    sb.Append(Serializer.Serialize(value));
+            //}
+            //else if (IsDictionary(value))
+            //{
+            //    sb.Append("{");
+            //    bool first = true;
+            //    foreach (dynamic item in (IEnumerable)value)
+            //    {
+            //        if (first)
+            //        {
+            //            first = false;
+            //        }
+            //        else
+            //        {
+            //            sb.Append(",");
+            //        }
+            //        sb.Append("\"" + item.Key.ToString() + "\":" + JSON.ToJSON(item.Value));
+            //    }
+            //    sb.Append("}");
+            //}
+            //else if (value is IEnumerable)
+            //{
+            //    sb.Append("[");
+            //    bool first = true;
+            //    foreach (object obj in (IEnumerable)value)
+            //    {
+            //        if (first)
+            //        {
+            //            first = false;
+            //        }
+            //        else
+            //        {
+            //            sb.Append(",");
+            //        }
+            //        if (Objects.IsImmutable(obj))
+            //        {
+            //            valueToJSON(obj);
+            //        }
+            //        else
+            //        {
+            //            SerializeImpl(obj);
+            //        }
+            //    }
+            //    sb.Append("]");
+            //}
+            //else
+            //{
+            //    throw new InvalidOperationException("Serializer error: valueToJson called for an object");
+            //}
         }
 
         /// <summary>

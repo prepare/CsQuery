@@ -61,7 +61,7 @@ namespace CsQuery.Engine
         /// The CSS selector string, or a string of HTML.
         /// </param>
 
-        public Selector(string selector)   
+        public Selector(string selector)
         {
             var parser = new SelectorParser();
             Clauses.AddRange(parser.Parse(selector));
@@ -75,7 +75,8 @@ namespace CsQuery.Engine
         /// A sequence of elements.
         /// </param>
 
-        public Selector(IEnumerable<IDomObject> elements ) {
+        public Selector(IEnumerable<IDomObject> elements)
+        {
 
             SelectorClause sel = new SelectorClause();
             sel.SelectorType = SelectorType.Elements;
@@ -218,7 +219,7 @@ namespace CsQuery.Engine
         public Selector ToContextSelector()
         {
             var filter = Clone();
-            
+
             foreach (var sel in filter.Clauses)
             {
 
@@ -236,7 +237,7 @@ namespace CsQuery.Engine
             return filter;
         }
 
-     
+
         #endregion
 
         #region private properties
@@ -257,8 +258,8 @@ namespace CsQuery.Engine
 
         private SelectorEngine GetEngine(IDomDocument document)
         {
-            
-            var engine = new SelectorEngine(document,this);
+
+            var engine = new SelectorEngine(document, this);
             return engine;
         }
 
@@ -276,7 +277,7 @@ namespace CsQuery.Engine
                 }
                 return _Clauses;
             }
-        } 
+        }
 
         /// <summary>
         /// Gets a clone of the list of member clauses in this selector
@@ -324,7 +325,8 @@ namespace CsQuery.Engine
 
         public void Insert(int index, SelectorClause clause, CombinatorType combinatorType = CombinatorType.Chained)
         {
-            if (combinatorType == CombinatorType.Root && Clauses.Count!=0) {
+            if (combinatorType == CombinatorType.Root && Clauses.Count != 0)
+            {
                 throw new ArgumentException("Combinator type can only be root if there are no other selectors.");
             }
 
@@ -393,7 +395,7 @@ namespace CsQuery.Engine
 
         public IList<IDomObject> Select(IDomDocument document, IEnumerable<IDomObject> context)
         {
-            
+
             return GetEngine(document).Select(context);
         }
 
@@ -418,8 +420,9 @@ namespace CsQuery.Engine
             // to be ordered in DOM order, and not its original order.
 
             HashSet<IDomObject> matches = new HashSet<IDomObject>(ToFilterSelector().Select(document, sequence));
-            
-            foreach (var item in sequence) {
+
+            foreach (var item in sequence)
+            {
                 if (matches.Contains(item))
                 {
                     yield return item;
@@ -461,7 +464,7 @@ namespace CsQuery.Engine
         /// <returns>
         /// The elements from the source sequence that do not match this selector.
         /// </returns>
-        
+
         public IEnumerable<IDomObject> Except(IDomDocument document, IEnumerable<IDomObject> sequence)
         {
             return sequence.Except(Select(document));
@@ -476,7 +479,7 @@ namespace CsQuery.Engine
             //}
         }
 
-       
+
         /// <summary>
         /// Return a clone of this selector.
         /// </summary>
@@ -503,10 +506,11 @@ namespace CsQuery.Engine
         public override string ToString()
         {
             string output = "";
-            bool first=true;
+            bool first = true;
             foreach (var selector in this)
             {
-                if (!first) {
+                if (!first)
+                {
                     if (selector.CombinatorType == CombinatorType.Root)
                     {
                         output += ",";
@@ -516,7 +520,7 @@ namespace CsQuery.Engine
                         output += "&";
                     }
                 }
-                output+=selector.ToString();
+                output += selector.ToString();
                 first = false;
             }
             return output;

@@ -27,8 +27,7 @@ namespace CsQuery.Tests.HtmlParser
         public void ImplementsInterface()
         {
             CQ cq = CQ.Create("<button>Boo!</button>");
-            IHTMLButtonElement buttonElement = cq["button"].FirstElement() as IHTMLButtonElement;
-
+            IHTMLButtonElement buttonElement = cq["button"].FirstElement() as IHTMLButtonElement; 
             Assert.IsNotNull(buttonElement);
         }
 

@@ -2,15 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
+
 using System.Text;
 using System.Web;
 using System.IO;
-using System.Xml;
+
 using CsQuery.HtmlParser;
 using CsQuery.StringScanner;
-using CsQuery.ExtensionMethods;
-using CsQuery.ExtensionMethods.Internal;
+
+
 
 namespace CsQuery.Implementation
 {

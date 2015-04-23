@@ -2,20 +2,8 @@
 namespace CsQuery
 {
     public class CQ
-    {
-        public static CQ CreateFragment(string s1, string s2)
-        {
-            throw new NotImplementedException();
-        }
-    }
-    public class SelectorEngine
-    {
-        public SelectorEngine()
-        {
-        }
-    }
-
-
+    { 
+    } 
 }
 namespace System
 {
@@ -61,53 +49,52 @@ namespace System
         }
 
     }
-    namespace Collections.Concurrent
-    {
-        class dummy { }
-    }
-
-    namespace Linq
-    {
-        class dummy { }
-    }
-    namespace Xml
-    {
-        class dummy { }
-    }
+    //namespace Collections.Concurrent
+    //{
+    //    class dummy { }
+    //} 
+    //namespace Linq
+    //{
+    //    class dummy { }
+    //}
+    //namespace Xml
+    //{
+    //    class dummy { }
+    //}
 }
 namespace CsQuery
 {
 
-    namespace ExtensionMethods
-    {
-        class dummy { }
-    }
-    namespace ExtensionMethods.Internal
-    {
-        class dummy { }
-    }
-    namespace Utility
-    {
-        class dummy { }
-    }
-    namespace Engine
-    {
-        class dummy { }
-    }
-    namespace HtmlParser
-    {
-        class dummy { }
-    }
-    namespace Output
-    {
-        class dummy { }
-    }
-    namespace StringScanner
-    {
-        class dummy { }
-    }
-    namespace StringScanner.Implementation
-    {
-        class dummy { }
-    }
+    //namespace ExtensionMethods
+    //{
+    //    class dummy { }
+    //}
+    //namespace ExtensionMethods.Internal
+    //{
+    //    class dummy { }
+    //}
+    //namespace Utility
+    //{
+    //    class dummy { }
+    //}
+    //namespace Engine
+    //{
+    //    class dummy { }
+    //}
+    //namespace HtmlParser
+    //{
+    //    class dummy { }
+    //}
+    //namespace Output
+    //{
+    //    class dummy { }
+    //}
+    //namespace StringScanner
+    //{
+    //    class dummy { }
+    //}
+    //namespace StringScanner.Implementation
+    //{
+    //    class dummy { }
+    //}
 }

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using System.Text;
 using System.IO;
-using CsQuery.ExtensionMethods;
-using CsQuery.ExtensionMethods.Internal;
+
+
 using CsQuery.Utility;
 using CsQuery.Engine;
 using CsQuery.HtmlParser;

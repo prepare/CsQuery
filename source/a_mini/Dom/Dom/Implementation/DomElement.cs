@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
+
 using System.Text;
 using System.IO;
 using System.Diagnostics;
 using CsQuery.StringScanner;
 using CsQuery.HtmlParser;
-using CsQuery.ExtensionMethods;
-using CsQuery.ExtensionMethods.Internal;
+
+
 using CsQuery.Output;
 
 namespace CsQuery.Implementation

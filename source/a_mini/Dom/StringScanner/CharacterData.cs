@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
+
 using System.Text;
-using CsQuery.StringScanner;
-using CsQuery.StringScanner.Implementation;
+using CsQuery.StringScanner; 
 
 namespace CsQuery.StringScanner
 {

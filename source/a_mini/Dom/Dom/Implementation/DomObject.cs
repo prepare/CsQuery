@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using System.Text;
 using System.IO;
 using System.Runtime.InteropServices;
 using CsQuery.HtmlParser;
-using CsQuery.ExtensionMethods;
-using CsQuery.ExtensionMethods.Internal;
+
+
 using CsQuery.Output;
 
 namespace CsQuery.Implementation

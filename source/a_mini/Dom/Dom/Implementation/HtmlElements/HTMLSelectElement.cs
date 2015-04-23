@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq;
+
 using CsQuery.HtmlParser;
 
 namespace CsQuery.Implementation

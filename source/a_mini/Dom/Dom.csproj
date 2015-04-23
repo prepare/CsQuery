@@ -36,7 +36,6 @@
   <ItemGroup>
     <Compile Include="0_dummy\dummyNS.cs" />
     <Compile Include="Config\enumDomRenderingOptions.cs" />
-    <Compile Include="Config\enumStartupOptions.cs" />
     <Compile Include="Dom\enumCSSRuleType.cs" />
     <Compile Include="Dom\enumCssStyleType.cs" />
     <Compile Include="Dom\enumDocType.cs" />

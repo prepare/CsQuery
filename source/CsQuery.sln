@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsQuery", "CsQuery\CsQuery.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csquery.Tests", "CsQuery.Tests\Csquery.Tests.csproj", "{F8920741-0BB4-4939-A774-0F9059B2B7F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlParserSharp", "CsQuery\MyHtmlParserSharp\HtmlParserSharp\HtmlParserSharp.csproj", "{FD150915-D34F-436A-92C1-80AA505DA754}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlParserSharp", "a_mini\HtmlParserSharp\HtmlParserSharp.csproj", "{FD150915-D34F-436A-92C1-80AA505DA754}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,9 +40,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_UpdateAssemblyVersion = False
-		BuildVersion_AssemblyInfoFilename = 
-		BuildVersion_UseGlobalSettings = False
 		BuildVersion_BuildVersioningStyle = None.None.None.Increment
+		BuildVersion_UseGlobalSettings = False
+		BuildVersion_AssemblyInfoFilename = 
+		BuildVersion_UpdateAssemblyVersion = False
 	EndGlobalSection
 EndGlobal

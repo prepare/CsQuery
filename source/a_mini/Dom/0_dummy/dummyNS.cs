@@ -2,8 +2,8 @@
 namespace CsQuery
 {
     public class CQ
-    { 
-    } 
+    {
+    }
 }
 namespace System
 {
@@ -11,9 +11,7 @@ namespace System
     public class MyNotImplementException : Exception
     {
 
-    }
-
-
+    } 
     namespace Collections.Generic
     {
         public static class CollectionExtensionMethods
@@ -49,6 +47,7 @@ namespace System
         }
 
     }
+
     //namespace Collections.Concurrent
     //{
     //    class dummy { }

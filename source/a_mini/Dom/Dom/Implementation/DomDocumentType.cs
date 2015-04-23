@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 using System.Text;
-using System.Text.RegularExpressions;
+ 
 
 namespace CsQuery.Implementation
 {
@@ -67,9 +67,9 @@ namespace CsQuery.Implementation
 
         #region private properties
 
-        private static Regex DocTypeRegex = new Regex(
-                @"^\s*([a-zA-Z0-9]+)\s+[a-zA-Z]+(\s+""(.*?)"")*\s*$", 
-            RegexOptions.IgnoreCase);
+        //private static Regex DocTypeRegex = new Regex(
+        //        @"^\s*([a-zA-Z0-9]+)\s+[a-zA-Z]+(\s+""(.*?)"")*\s*$", 
+        //    RegexOptions.IgnoreCase);
         private string DocTypeName { get; set; }
         private string Access {get; set;}
         private string FPI { get; set; }
@@ -138,28 +138,29 @@ namespace CsQuery.Implementation
             }
             set
             {
-                string docTypeName="";
-                string fpi="";
-                string access="";
-                string uri = "";
+                throw new MyNotImplementException();
+                //string docTypeName="";
+                //string fpi="";
+                //string access="";
+                //string uri = "";
 
-                MatchCollection matches = DocTypeRegex.Matches(value);
-                if (matches.Count > 0)
-                {
-                    docTypeName = matches[0].Groups[1].Value;
-                    if (matches[0].Groups.Count ==4 )
-                    {
-                        var grp = matches[0].Groups[3];
-                        access = grp.Captures[0].Value;
-                        if (grp.Captures.Count > 1)
-                        {
-                            fpi = grp.Captures[1].Value;
-                            uri= grp.Captures[2].Value;
-                        }
-                    }
-                }
+                //MatchCollection matches = DocTypeRegex.Matches(value);
+                //if (matches.Count > 0)
+                //{
+                //    docTypeName = matches[0].Groups[1].Value;
+                //    if (matches[0].Groups.Count ==4 )
+                //    {
+                //        var grp = matches[0].Groups[3];
+                //        access = grp.Captures[0].Value;
+                //        if (grp.Captures.Count > 1)
+                //        {
+                //            fpi = grp.Captures[1].Value;
+                //            uri= grp.Captures[2].Value;
+                //        }
+                //    }
+                //}
               
-                SetDocType(docTypeName,access,fpi,uri);
+                //SetDocType(docTypeName,access,fpi,uri);
             }
         }
 

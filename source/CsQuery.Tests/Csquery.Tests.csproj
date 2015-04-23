@@ -319,6 +319,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\a_mini\HtmlParserSharp\HtmlParserSharp.csproj">
+      <Project>{FD150915-D34F-436A-92C1-80AA505DA754}</Project>
+      <Name>HtmlParserSharp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CsQuery\CsQuery.csproj">
       <Project>{C38DFFE9-321B-4941-B031-29D718AB5C31}</Project>
       <Name>CsQuery</Name>

@@ -254,8 +254,7 @@ namespace CsQuery
 
         /// <summary>
         /// The current selection set including all node types.
-        /// </summary>
-
+        /// </summary> 
         protected SelectionSet<IDomObject> SelectionSet
         {
             get

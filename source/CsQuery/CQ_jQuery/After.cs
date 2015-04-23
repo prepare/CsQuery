@@ -10,7 +10,7 @@ using CsQuery.Engine;
 using CsQuery.Implementation;
 
 namespace CsQuery
-{
+{   
     public partial class CQ
     {
         #region public methods

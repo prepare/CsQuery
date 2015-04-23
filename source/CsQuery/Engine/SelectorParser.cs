@@ -471,6 +471,7 @@ namespace CsQuery.Engine
             {
                 var cur = Current.Clone();
                 Selectors.Add(cur);
+                
             }
             Current.Clear();
             NextTraversalType = TraversalType.Filter;

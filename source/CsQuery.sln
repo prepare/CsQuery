@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csquery.Tests", "CsQuery.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlParserSharp", "a_mini\HtmlParserSharp\HtmlParserSharp.csproj", "{FD150915-D34F-436A-92C1-80AA505DA754}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlParserSharp2", "a_mini\HtmlParserSharp2\HtmlParserSharp2.csproj", "{3A69B42C-907B-4361-840F-92554F9C586E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,12 @@ Global
 		{FD150915-D34F-436A-92C1-80AA505DA754}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD150915-D34F-436A-92C1-80AA505DA754}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FD150915-D34F-436A-92C1-80AA505DA754}.Release|x64.ActiveCfg = Release|Any CPU
+		{3A69B42C-907B-4361-840F-92554F9C586E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A69B42C-907B-4361-840F-92554F9C586E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A69B42C-907B-4361-840F-92554F9C586E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3A69B42C-907B-4361-840F-92554F9C586E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A69B42C-907B-4361-840F-92554F9C586E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A69B42C-907B-4361-840F-92554F9C586E}.Release|x64.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

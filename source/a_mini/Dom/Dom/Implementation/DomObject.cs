@@ -1164,12 +1164,7 @@ namespace CsQuery.Implementation
         /// A new CQ object wrapping this element.
         /// </returns>
 
-        public CQ Cq()
-        {
-            //TODO: make this extension method!
-            throw new MyNotImplementException();
-            //return new CQ(this);
-        }
+         
 
         /// <summary>
         /// Clone this element.

@@ -1,10 +1,5 @@
 ﻿using System;
-namespace CsQuery
-{
-    public class CQ
-    {
-    }
-}
+ 
 namespace System
 {
 

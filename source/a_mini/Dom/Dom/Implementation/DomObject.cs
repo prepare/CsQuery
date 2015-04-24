@@ -1245,7 +1245,7 @@ namespace CsQuery.Implementation
         /// The element to append.
         /// </param>
 
-        internal virtual void AppendChildUnsafe(IDomObject element) 
+        public virtual void AppendChildUnsafe(IDomObject element) 
         {
             throw new InvalidOperationException("This type of element does not have children.");
         }

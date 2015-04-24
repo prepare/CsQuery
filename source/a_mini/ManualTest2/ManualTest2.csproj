@@ -34,11 +34,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Form1.cs">
@@ -70,6 +68,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DomBuilder\DomBuilder.csproj">
+      <Project>{2ED75FFA-1097-4894-92B6-A096187A6256}</Project>
+      <Name>DomBuilder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dom\Dom.csproj">
+      <Project>{D24E121E-01EF-429F-8CF8-607931FA2E81}</Project>
+      <Name>Dom</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HtmlParserSharp2\HtmlParserSharp2.csproj">
+      <Project>{3A69B42C-907B-4361-840F-92554F9C586E}</Project>
+      <Name>HtmlParserSharp2</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

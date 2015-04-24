@@ -128,13 +128,6 @@
     <Compile Include="Implementation\IReadOnlyCollection.cs" />
     <Compile Include="Implementation\IReadOnlyList.cs" />
     <Compile Include="0_dummy\NET20\Net20.cs" />
-    <Compile Include="Output\HtmlEncoderBase.cs" />
-    <Compile Include="Output\HtmlEncoderBasic.cs" />
-    <Compile Include="Output\HtmlEncoderFull.cs" />
-    <Compile Include="Output\HtmlEncoderMinimum.cs" />
-    <Compile Include="Output\HtmlEncoderMinimumNbsp.cs" />
-    <Compile Include="Output\HtmlEncoderNone.cs" />
-    <Compile Include="Output\IHtmlEncoder.cs" />
     <Compile Include="Output\IOutputFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringScanner\CharacterData.cs" />

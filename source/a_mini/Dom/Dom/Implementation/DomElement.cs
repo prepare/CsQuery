@@ -1512,10 +1512,11 @@ namespace CsQuery.Implementation
         /// This object as a string.
         /// </returns>
 
-        public override string ToString()
-        {
-            return ElementHtml();
-        }
+        //public override string ToString()
+        //{
+        //    return 
+        // //   return ElementHtml();
+        //}
 
         // ICSSStyleDeclations
 

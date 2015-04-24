@@ -1066,7 +1066,11 @@ namespace CsQuery.Implementation
 
         public virtual string Render()
         {
-            throw new MyNotImplementException();
+
+
+            //throw new MyNotImplementException();
+            var mytype = this.GetType();
+            return mytype.Name;
             //return Render(OutputFormatters.Default);
         }
 
@@ -1790,10 +1794,10 @@ namespace CsQuery.Implementation
             // during the add operation.
 
             if (HasChildren && _Document != null)
-            {   
+            {
                 foreach (var item in ChildNodes)
                 {
-                    ((DomObject)item).UpdateDocumentFlags(_Document); 
+                    ((DomObject)item).UpdateDocumentFlags(_Document);
                 }
             }
         }

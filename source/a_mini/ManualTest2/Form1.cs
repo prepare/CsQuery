@@ -21,7 +21,7 @@ namespace ManualTest2
             //CQ cq = CQ.Create("<button>Boo!</button>");
             //IHTMLButtonElement buttonElement = cq["button"].FirstElement() as IHTMLButtonElement;
             //Assert.IsNotNull(buttonElement); 
-            ParseHtmlFragment("<button>Boo!</button>");
+            ParseHtmlFragment("<button>Boo!<div>ABD</div></button>");
         }
         void ParseHtmlFragment(string htmlFragment)
         {
@@ -33,7 +33,36 @@ namespace ManualTest2
                       CsQuery.HtmlParsingOptions.Default,
                       CsQuery.DocType.HTML5);
 
+
+                this.treeView1.Nodes.Clear();
+
+                var treeNode = new TreeNode("root");
+                treeView1.Nodes.Add(treeNode);
+                if (domdoc.HasChildren)
+                {
+                    foreach (var child in domdoc.ChildNodes)
+                    {
+                        DescribeDomNode(child, treeNode);
+                    }
+                }
+
+                this.treeView1.ExpandAll();
             }
         }
+        void DescribeDomNode(CsQuery.IDomNode domnode, TreeNode parentTreeNode)
+        {
+            var treeNode = new TreeNode(domnode.ToString());
+            parentTreeNode.Nodes.Add(treeNode);
+            if (domnode.HasChildren)
+            {
+                foreach (var child in domnode.ChildNodes)
+                {
+                    DescribeDomNode(child, treeNode);
+                }
+            }
+            
+
+        }
+
     }
 }

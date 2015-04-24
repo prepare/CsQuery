@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CsQuery.Engine
 {
-    internal enum IndexOperationType
+    public enum IndexOperationType
     {
         /// <summary>
         /// Adds to the index
@@ -21,7 +21,7 @@ namespace CsQuery.Engine
         Change =3
     }
 
-    internal struct IndexOperation
+    public struct IndexOperation
     {
         public IndexOperationType IndexOperationType;
         public ushort[] Key;

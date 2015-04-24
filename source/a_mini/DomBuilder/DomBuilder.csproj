@@ -37,12 +37,22 @@
   <ItemGroup>
     <Compile Include="Config\Config.cs" />
     <Compile Include="Config\CsQueryConfig.cs" />
+    <Compile Include="Engine\DomIndexNone.cs" />
+    <Compile Include="Engine\DomIndexProviders.cs" />
+    <Compile Include="Engine\DomIndexRanged.cs" />
+    <Compile Include="Engine\DomIndexSimple.cs" />
+    <Compile Include="Engine\enumDomIndexFeatures.cs" />
     <Compile Include="HtmlParser\BOMReader.cs" />
     <Compile Include="HtmlParser\CsQueryTreeBuilder.cs" />
     <Compile Include="HtmlParser\ElementFactory.cs" />
     <Compile Include="HtmlParser\HtmlEncoding.cs" />
     <Compile Include="Implementation\CombinedStream.cs" />
     <Compile Include="Implementation\CombinedTextReader.cs" />
+    <Compile Include="Implementation\IRangeSortedDictionary.cs" />
+    <Compile Include="Implementation\MonoSortedSet.cs" />
+    <Compile Include="Implementation\PathKeyComparer.cs" />
+    <Compile Include="Implementation\RangeSortedDictionary.cs" />
+    <Compile Include="Implementation\RBTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,18 @@
 
 namespace System
 {
-     
+    namespace Collections.Generic
+    {
+        public interface ISet<T> : IEnumerable<T>, ICollection<T>
+        {
+           
+        }
+        //public class SortedSet<T>
+        //{
+
+        //}
+    }
+
     public class MyNotImplementException : Exception
     {
         //TODO: find this exception in the code 
@@ -48,14 +59,14 @@ namespace System
     //{
     //    class dummy { }
     //}
-    //namespace Linq
-    //{
-    //    class dummy { }
-    //}
-    namespace Xml
+    namespace Linq
     {
         class dummy { }
     }
+    //namespace Xml
+    //{
+    //    class dummy { }
+    //}
 }
 namespace CsQuery
 {

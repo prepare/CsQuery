@@ -1,12 +1,24 @@
 ﻿using System;
- 
+
 namespace System
 {
+    namespace Collections.Generic
+    {
+        public interface ISet<T> : IEnumerable<T>, ICollection<T>
+        {
+           
+        }
+        //public class SortedSet<T>
+        //{
+
+        //}
+    }
 
     public class MyNotImplementException : Exception
     {
-
-    } 
+        //TODO: find this exception in the code 
+        //and reimplement it again
+    }
     namespace Collections.Generic
     {
         public static class CollectionExtensionMethods
@@ -46,11 +58,11 @@ namespace System
     //namespace Collections.Concurrent
     //{
     //    class dummy { }
-    //} 
-    //namespace Linq
-    //{
-    //    class dummy { }
     //}
+    namespace Linq
+    {
+        class dummy { }
+    }
     //namespace Xml
     //{
     //    class dummy { }
@@ -58,37 +70,40 @@ namespace System
 }
 namespace CsQuery
 {
-
-    //namespace ExtensionMethods
-    //{
-    //    class dummy { }
-    //}
-    //namespace ExtensionMethods.Internal
-    //{
-    //    class dummy { }
-    //}
-    //namespace Utility
-    //{
-    //    class dummy { }
-    //}
-    //namespace Engine
-    //{
-    //    class dummy { }
-    //}
-    //namespace HtmlParser
-    //{
-    //    class dummy { }
-    //}
-    //namespace Output
-    //{
-    //    class dummy { }
-    //}
-    //namespace StringScanner
-    //{
-    //    class dummy { }
-    //}
-    //namespace StringScanner.Implementation
-    //{
-    //    class dummy { }
-    //}
+    namespace Implementation
+    {
+        class dummy { }
+    }
+    namespace ExtensionMethods
+    {
+        class dummy { }
+    }
+    namespace ExtensionMethods.Internal
+    {
+        class dummy { }
+    }
+    namespace Utility
+    {
+        class dummy { }
+    }
+    namespace Engine
+    {
+        class dummy { }
+    }
+    namespace HtmlParser
+    {
+        class dummy { }
+    }
+    namespace Output
+    {
+        class dummy { }
+    }
+    namespace StringScanner
+    {
+        class dummy { }
+    }
+    namespace StringScanner.Implementation
+    {
+        class dummy { }
+    }
 }

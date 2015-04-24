@@ -198,8 +198,9 @@ namespace CsQuery.Implementation
         /// The element to append.
         /// </param>
 
-        internal override void AppendChildUnsafe(IDomObject item)
+        public override void AppendChildUnsafe(IDomObject item)
         {
+         
             ChildNodesInternal.AddAlways(item);
         }
 

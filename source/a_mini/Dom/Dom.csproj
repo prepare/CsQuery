@@ -33,6 +33,11 @@
   <ItemGroup>
     <Compile Include="0_dummy\dummyNS.cs" />
     <Compile Include="Config\enumDomRenderingOptions.cs" />
+    <Compile Include="Dom2\IDomIndexProvider.cs" />
+    <Compile Include="Dom2\IDomIndexQueue.cs" />
+    <Compile Include="Dom2\IDomIndexRanged.cs" />
+    <Compile Include="Dom2\IDomIndexSimple.cs" />
+    <Compile Include="Dom2\IndexOperation.cs" />
     <Compile Include="Dom\enumCSSRuleType.cs" />
     <Compile Include="Dom\enumCssStyleType.cs" />
     <Compile Include="Dom\enumDocType.cs" />
@@ -122,7 +127,14 @@
     <Compile Include="HtmlParser\HtmlData.cs" />
     <Compile Include="Implementation\IReadOnlyCollection.cs" />
     <Compile Include="Implementation\IReadOnlyList.cs" />
-    <Compile Include="NET20\Net20.cs" />
+    <Compile Include="0_dummy\NET20\Net20.cs" />
+    <Compile Include="Output\HtmlEncoderBase.cs" />
+    <Compile Include="Output\HtmlEncoderBasic.cs" />
+    <Compile Include="Output\HtmlEncoderFull.cs" />
+    <Compile Include="Output\HtmlEncoderMinimum.cs" />
+    <Compile Include="Output\HtmlEncoderMinimumNbsp.cs" />
+    <Compile Include="Output\HtmlEncoderNone.cs" />
+    <Compile Include="Output\IHtmlEncoder.cs" />
     <Compile Include="Output\IOutputFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringScanner\CharacterData.cs" />
@@ -134,6 +146,9 @@
       <Project>{FD150915-D34F-436A-92C1-80AA505DA754}</Project>
       <Name>HtmlParserSharp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

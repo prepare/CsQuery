@@ -59,10 +59,10 @@ namespace System
     //{
     //    class dummy { }
     //}
-    namespace Linq
-    {
-        class dummy { }
-    }
+    //namespace Linq
+    //{
+    //    class dummy { }
+    //}
     //namespace Xml
     //{
     //    class dummy { }
@@ -70,40 +70,40 @@ namespace System
 }
 namespace CsQuery
 {
-    namespace Implementation
-    {
-        class dummy { }
-    }
-    namespace ExtensionMethods
-    {
-        class dummy { }
-    }
-    namespace ExtensionMethods.Internal
-    {
-        class dummy { }
-    }
-    namespace Utility
-    {
-        class dummy { }
-    }
-    namespace Engine
-    {
-        class dummy { }
-    }
-    namespace HtmlParser
-    {
-        class dummy { }
-    }
-    namespace Output
-    {
-        class dummy { }
-    }
-    namespace StringScanner
-    {
-        class dummy { }
-    }
-    namespace StringScanner.Implementation
-    {
-        class dummy { }
-    }
+    //namespace Implementation
+    //{
+    //    class dummy { }
+    //}
+    //namespace ExtensionMethods
+    //{
+    //    class dummy { }
+    //}
+    //namespace ExtensionMethods.Internal
+    //{
+    //    class dummy { }
+    //}
+    //namespace Utility
+    //{
+    //    class dummy { }
+    //}
+    //namespace Engine
+    //{
+    //    class dummy { }
+    //}
+    //namespace HtmlParser
+    //{
+    //    class dummy { }
+    //}
+    //namespace Output
+    //{
+    //    class dummy { }
+    //}
+    //namespace StringScanner
+    //{
+    //    class dummy { }
+    //}
+    //namespace StringScanner.Implementation
+    //{
+    //    class dummy { }
+    //}
 }

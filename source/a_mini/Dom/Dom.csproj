@@ -135,12 +135,6 @@
     <Compile Include="Utility\Support.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HtmlParserSharp\HtmlParserSharp.csproj">
-      <Project>{FD150915-D34F-436A-92C1-80AA505DA754}</Project>
-      <Name>HtmlParserSharp</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="System" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

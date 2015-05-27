@@ -133,8 +133,8 @@ namespace CsQuery.Implementation
         }
 
         internal static DomElement Create(ushort nodeNameId)
-        { 
-            
+        {
+
             switch (nodeNameId)
             {
                 case HtmlData.tagA:
@@ -1966,7 +1966,7 @@ namespace CsQuery.Implementation
         /// The attribute for matching.
         /// </returns>
 
-        internal virtual bool TryGetAttributeForMatching(ushort attributeId, out string value)
+        public virtual bool TryGetAttributeForMatching(ushort attributeId, out string value)
         {
             return TryGetAttribute(attributeId, out value);
         }
@@ -2042,7 +2042,7 @@ namespace CsQuery.Implementation
         /// An enumerator.
         /// </returns>
 
-        internal IEnumerable<T> ChildElementsOfTag<T>(ushort nodeNameId)
+        public IEnumerable<T> ChildElementsOfTag<T>(ushort nodeNameId)
         {
             return ChildElementsOfTag<T>(this, nodeNameId);
         }

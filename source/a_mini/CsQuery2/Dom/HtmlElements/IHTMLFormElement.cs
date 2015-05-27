@@ -1,81 +1,81 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
 
-namespace CsQuery
-{   
-    /// <summary>
-    /// A FORM element.
-    /// </summary>
-    ///
-    /// <url>
-    /// http://dev.w3.org/html5/spec/single-page.html#the-form-element
-    /// </url>
+//namespace CsQuery
+//{   
+//    /// <summary>
+//    /// A FORM element.
+//    /// </summary>
+//    ///
+//    /// <url>
+//    /// http://dev.w3.org/html5/spec/single-page.html#the-form-element
+//    /// </url>
 
-    public interface IHTMLFormElement : IDomElement, INodeList<IDomElement>
-    {
-        /// <summary>
-        /// The accept-charset content attribute.
-        /// </summary>
+//    public interface IHTMLFormElement : IDomElement, INodeList<IDomElement>
+//    {
+//        /// <summary>
+//        /// The accept-charset content attribute.
+//        /// </summary>
 
-        string AcceptCharset {get;set;}
+//        string AcceptCharset {get;set;}
 
-        /// <summary>
-        /// The action attribute
-        /// </summary>
+//        /// <summary>
+//        /// The action attribute
+//        /// </summary>
 
-        string Action {get;set;}
+//        string Action {get;set;}
 
-        /// <summary>
-        /// The automcomplete attribute
-        /// </summary>
+//        /// <summary>
+//        /// The automcomplete attribute
+//        /// </summary>
 
-        string Autocomplete {get;set;}
+//        string Autocomplete {get;set;}
 
-        /// <summary>
-        /// Gets or sets the enctype.
-        /// </summary>
+//        /// <summary>
+//        /// Gets or sets the enctype.
+//        /// </summary>
 
-        string Enctype {get;set;}
+//        string Enctype {get;set;}
 
-        /// <summary>
-        /// Gets or sets the encoding.
-        /// </summary>
+//        /// <summary>
+//        /// Gets or sets the encoding.
+//        /// </summary>
 
-        string Encoding {get;set;}
+//        string Encoding {get;set;}
 
-        /// <summary>
-        /// Gets or sets the method attribute.
-        /// </summary>
+//        /// <summary>
+//        /// Gets or sets the method attribute.
+//        /// </summary>
 
-        string Method {get;set;}
+//        string Method {get;set;}
 
-        /// <summary>
-        /// Gets or sets a value indicating whether the no validate.
-        /// </summary>
+//        /// <summary>
+//        /// Gets or sets a value indicating whether the no validate.
+//        /// </summary>
 
-        bool NoValidate {get;set;}
+//        bool NoValidate {get;set;}
 
-        /// <summary>
-        /// Gets or sets the target attribute
-        /// </summary>
+//        /// <summary>
+//        /// Gets or sets the target attribute
+//        /// </summary>
 
-        string Target {get;set;}
+//        string Target {get;set;}
 
-        /// <summary>
-        /// An INodeList containing the form elements.
-        /// </summary>
+//        /// <summary>
+//        /// An INodeList containing the form elements.
+//        /// </summary>
 
-        INodeList<IDomElement> Elements {get;}
+//        INodeList<IDomElement> Elements {get;}
         
-        // could be implemented?
-        // 
-        //bool CheckValiditry()
-        //void Reset();
+//        // could be implemented?
+//        // 
+//        //bool CheckValiditry()
+//        //void Reset();
         
-        // no
-        // 
-        //void Submit();
-    }
-}
+//        // no
+//        // 
+//        //void Submit();
+//    }
+//}

@@ -138,6 +138,8 @@ namespace CsQuery
         public CQ Append(Func<int, string, IDomElement> func)
         {
             int index = 0;
+            //TODO: review here
+            //temp comment out
             foreach (IDomElement obj in Elements)
             {
                 IDomElement clientValue = func(index, obj.InnerHTML);
@@ -170,6 +172,8 @@ namespace CsQuery
         public CQ Append(Func<int, string, IEnumerable<IDomElement>> func)
         {
             int index = 0;
+
+
             foreach (IDomElement obj in Elements)
             {
                 IEnumerable<IDomElement> val = func(index, obj.InnerHTML);

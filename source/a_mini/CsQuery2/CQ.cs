@@ -20,6 +20,15 @@ using CsQuery.Utility;
 
 namespace CsQuery
 {
+
+    public static class CqExtension
+    {
+        public static CQ Cq(this IDomObject dom)
+        {
+            //TODO: implement here
+            throw new NotSupportedException();
+        }
+    }
     /// <summary>
     /// The CQ object is analogus to the basic jQuery object. It has instance methods that mirror the
     /// methods of a jQuery object, and static methods that mirror utility methods such as "$.map".
@@ -174,7 +183,7 @@ namespace CsQuery
             }
             set
             {
-                SelectionSet.OutputOrder= value;
+                SelectionSet.OutputOrder = value;
             }
         }
 
@@ -240,10 +249,10 @@ namespace CsQuery
             set
             {
                 _CsQueryParent = value;
-                
+
                 // only rebind Document when it's missing; e.g. upon creating a new document.
-                
-                if (value != null && _Document==null)
+
+                if (value != null && _Document == null)
                 {
                     Document = value.Document;
                 }
@@ -317,9 +326,9 @@ namespace CsQuery
         /// The current CQ object.
         /// </returns>
 
-        protected CQ SetSelection(IEnumerable<IDomObject> selectionSet, 
-            SelectionSetOrder inputOrder = SelectionSetOrder.Ascending, 
-            SelectionSetOrder outputOrder=0)
+        protected CQ SetSelection(IEnumerable<IDomObject> selectionSet,
+            SelectionSetOrder inputOrder = SelectionSetOrder.Ascending,
+            SelectionSetOrder outputOrder = 0)
         {
             SelectionSet = new SelectionSet<IDomObject>(selectionSet, inputOrder, outputOrder);
             return this;
@@ -343,7 +352,7 @@ namespace CsQuery
         protected CQ SetSelection(IDomObject element,
             SelectionSetOrder outputOrder = SelectionSetOrder.Ascending)
         {
-            SelectionSet = new SelectionSet<IDomObject>(Objects.Enumerate(element), outputOrder,outputOrder);
+            SelectionSet = new SelectionSet<IDomObject>(Objects.Enumerate(element), outputOrder, outputOrder);
             return this;
         }
 
@@ -499,7 +508,7 @@ namespace CsQuery
 
         protected bool AddSelection(IEnumerable<IDomObject> elements)
         {
-            bool result = false; 
+            bool result = false;
             foreach (IDomObject elm in elements)
             {
                 result = true;
@@ -707,9 +716,9 @@ namespace CsQuery
                 return selectors.Filter(Document, elements);
             }
         }
-        
+
 
         #endregion
-        
+
     }
 }

@@ -26,7 +26,7 @@ namespace CsQuery.StringScanner
 
         static CharacterData()
         {
-            charsHtmlSpaceArray = charsHtmlSpace.ToArray<char>();
+            charsHtmlSpaceArray = charsHtmlSpace.ToCharArray();
 
             characterFlags = new uint[65536];
             setBit(charsWhitespace, (uint)CharacterType.Whitespace);

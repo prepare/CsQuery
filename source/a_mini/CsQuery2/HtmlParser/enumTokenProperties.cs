@@ -1,75 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
 
-namespace CsQuery.HtmlParser
-{
-    /// <summary>
-    /// Bitfield of flags for specifying properties that may be tested on HTML tokens using a bitmap.
-    /// </summary>
+//namespace CsQuery.HtmlParser
+//{
+//    /// <summary>
+//    /// Bitfield of flags for specifying properties that may be tested on HTML tokens using a bitmap.
+//    /// </summary>
 
-    [Flags]
-    public enum TokenProperties: ushort
-    {
-        /// <summary>
-        /// the element is an HTML block-level element
-        /// </summary>
+//    [Flags]
+//    public enum TokenProperties: ushort
+//    {
+//        /// <summary>
+//        /// the element is an HTML block-level element
+//        /// </summary>
         
-        BlockElement=1,
+//        BlockElement=1,
 
-        /// <summary>
-        /// the attribute is a boolean property e.g. 'checked'
-        /// </summary>
+//        /// <summary>
+//        /// the attribute is a boolean property e.g. 'checked'
+//        /// </summary>
         
-        BooleanProperty=2,
+//        BooleanProperty=2,
         
-        /// <summary>
-        /// the tag is automatically closing, e.g. 'p'.
-        /// </summary>
+//        /// <summary>
+//        /// the tag is automatically closing, e.g. 'p'.
+//        /// </summary>
         
-        AutoOpenOrClose=4,
+//        AutoOpenOrClose=4,
         
-        /// <summary>
-        /// the tag may not have children
-        /// </summary>
+//        /// <summary>
+//        /// the tag may not have children
+//        /// </summary>
         
-        ChildrenNotAllowed=8,
+//        ChildrenNotAllowed=8,
 
-        /// <summary>
-        /// the tag may not have HTML children (but could possibly have children)
-        /// </summary>
+//        /// <summary>
+//        /// the tag may not have HTML children (but could possibly have children)
+//        /// </summary>
         
-        HtmlChildrenNotAllowed=16,
+//        HtmlChildrenNotAllowed=16,
 
-        /// <summary>
-        /// this tag causes an open p tag to close
-        /// </summary>
+//        /// <summary>
+//        /// this tag causes an open p tag to close
+//        /// </summary>
         
-        ParagraphCloser=32,
+//        ParagraphCloser=32,
 
-        /// <summary>
-        /// The tag may appear in HEAD
-        /// </summary>
+//        /// <summary>
+//        /// The tag may appear in HEAD
+//        /// </summary>
         
-        MetaDataTags = 64,
+//        MetaDataTags = 64,
        
-        /// <summary>
-        /// election of attribute values is not case sensitive
-        /// </summary>
+//        /// <summary>
+//        /// election of attribute values is not case sensitive
+//        /// </summary>
         
-        CaseInsensitiveValues = 128,
+//        CaseInsensitiveValues = 128,
 
-        /// <summary>
-        /// Has a VALUE property
-        /// </summary>
+//        /// <summary>
+//        /// Has a VALUE property
+//        /// </summary>
         
-        HasValue = 256,
+//        HasValue = 256,
 
-        /// <summary>
-        /// Element is a form input control
-        /// </summary>
+//        /// <summary>
+//        /// Element is a form input control
+//        /// </summary>
         
-        FormInputControl = 512
-    }
-}
+//        FormInputControl = 512
+//    }
+//}

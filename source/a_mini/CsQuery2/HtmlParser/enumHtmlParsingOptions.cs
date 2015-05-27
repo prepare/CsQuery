@@ -1,40 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
 
-namespace CsQuery
-{
-    /// <summary>
-    /// The options used when parsing strings of HTML
-    /// </summary>
+//namespace CsQuery
+//{
+//    /// <summary>
+//    /// The options used when parsing strings of HTML
+//    /// </summary>
 
-    [Flags]
-    public enum HtmlParsingOptions : byte
-    {
-        /// <summary>
-        /// No options applied.
-        /// </summary>
+//    [Flags]
+//    public enum HtmlParsingOptions : byte
+//    {
+//        /// <summary>
+//        /// No options applied.
+//        /// </summary>
         
-        None=0,
+//        None=0,
 
-        /// <summary>
-        /// Default options (from Config.HtmlParsingOptions) are applied.
-        /// </summary>
+//        /// <summary>
+//        /// Default options (from Config.HtmlParsingOptions) are applied.
+//        /// </summary>
         
-        Default=1,
+//        Default=1,
 
-       /// <summary>
-       /// Tags may be self-closing.
-       /// </summary>
+//       /// <summary>
+//       /// Tags may be self-closing.
+//       /// </summary>
 
-        AllowSelfClosingTags=2,
+//        AllowSelfClosingTags=2,
 
 
-        /// <summary>
-        /// Comments are ignored entirely.
-        /// </summary>
+//        /// <summary>
+//        /// Comments are ignored entirely.
+//        /// </summary>
         
-        IgnoreComments=4
-    }
-}
+//        IgnoreComments=4
+//    }
+//}

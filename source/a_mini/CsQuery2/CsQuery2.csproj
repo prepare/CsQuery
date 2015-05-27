@@ -413,6 +413,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DomBuilder\DomBuilder.csproj">
+      <Project>{2ED75FFA-1097-4894-92B6-A096187A6256}</Project>
+      <Name>DomBuilder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dom\Dom.csproj">
+      <Project>{D24E121E-01EF-429F-8CF8-607931FA2E81}</Project>
+      <Name>Dom</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HtmlParserSharp2\HtmlParserSharp2.csproj">
       <Project>{3A69B42C-907B-4361-840F-92554F9C586E}</Project>
       <Name>HtmlParserSharp2</Name>

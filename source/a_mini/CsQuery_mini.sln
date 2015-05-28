@@ -1,23 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlParserSharp2", "a_mini\HtmlParserSharp2\HtmlParserSharp2.csproj", "{3A69B42C-907B-4361-840F-92554F9C586E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlParserSharp2", "HtmlParserSharp2\HtmlParserSharp2.csproj", "{3A69B42C-907B-4361-840F-92554F9C586E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dom", "a_mini\Dom\Dom.csproj", "{D24E121E-01EF-429F-8CF8-607931FA2E81}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dom", "Dom\Dom.csproj", "{D24E121E-01EF-429F-8CF8-607931FA2E81}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1_Experiment", "1_Experiment", "{58ABFF54-40C3-4A05-8565-4CAEF523717D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomBuilder", "a_mini\DomBuilder\DomBuilder.csproj", "{2ED75FFA-1097-4894-92B6-A096187A6256}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomBuilder", "DomBuilder\DomBuilder.csproj", "{2ED75FFA-1097-4894-92B6-A096187A6256}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsQuery2", "a_mini\CsQuery2\CsQuery2.csproj", "{A8B854DC-944C-4104-901A-B6E50BCF577E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0_Original", "0_Original", "{F3551EFE-CE32-4033-90A3-84C450A20065}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsQuery", "CsQuery\CsQuery.csproj", "{C38DFFE9-321B-4941-B031-29D718AB5C31}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csquery.Tests", "CsQuery.Tests\Csquery.Tests.csproj", "{F8920741-0BB4-4939-A774-0F9059B2B7F0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlParserSharp", "a_mini\HtmlParserSharp\HtmlParserSharp.csproj", "{FD150915-D34F-436A-92C1-80AA505DA754}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsQuery2", "CsQuery2\CsQuery2.csproj", "{A8B854DC-944C-4104-901A-B6E50BCF577E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,44 +71,6 @@ Global
 		{A8B854DC-944C-4104-901A-B6E50BCF577E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{A8B854DC-944C-4104-901A-B6E50BCF577E}.Release|x64.ActiveCfg = Release|Any CPU
 		{A8B854DC-944C-4104-901A-B6E50BCF577E}.Release|x86.ActiveCfg = Release|Any CPU
-		{C38DFFE9-321B-4941-B031-29D718AB5C31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C38DFFE9-321B-4941-B031-29D718AB5C31}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C38DFFE9-321B-4941-B031-29D718AB5C31}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
-		{C38DFFE9-321B-4941-B031-29D718AB5C31}.Debug|Mixed Platforms.Build.0 = Debug|x64
-		{C38DFFE9-321B-4941-B031-29D718AB5C31}.Debug|x64.ActiveCfg = Debug|x64
-		{C38DFFE9-321B-4941-B031-29D718AB5C31}.Debug|x64.Build.0 = Debug|x64
-		{C38DFFE9-321B-4941-B031-29D718AB5C31}.Debug|x86.ActiveCfg = Debug|x64
-		{C38DFFE9-321B-4941-B031-29D718AB5C31}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C38DFFE9-321B-4941-B031-29D718AB5C31}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C38DFFE9-321B-4941-B031-29D718AB5C31}.Release|Mixed Platforms.ActiveCfg = Release|x64
-		{C38DFFE9-321B-4941-B031-29D718AB5C31}.Release|Mixed Platforms.Build.0 = Release|x64
-		{C38DFFE9-321B-4941-B031-29D718AB5C31}.Release|x64.ActiveCfg = Release|x64
-		{C38DFFE9-321B-4941-B031-29D718AB5C31}.Release|x64.Build.0 = Release|x64
-		{C38DFFE9-321B-4941-B031-29D718AB5C31}.Release|x86.ActiveCfg = Release|x64
-		{F8920741-0BB4-4939-A774-0F9059B2B7F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F8920741-0BB4-4939-A774-0F9059B2B7F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F8920741-0BB4-4939-A774-0F9059B2B7F0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{F8920741-0BB4-4939-A774-0F9059B2B7F0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{F8920741-0BB4-4939-A774-0F9059B2B7F0}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{F8920741-0BB4-4939-A774-0F9059B2B7F0}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{F8920741-0BB4-4939-A774-0F9059B2B7F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F8920741-0BB4-4939-A774-0F9059B2B7F0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F8920741-0BB4-4939-A774-0F9059B2B7F0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{F8920741-0BB4-4939-A774-0F9059B2B7F0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{F8920741-0BB4-4939-A774-0F9059B2B7F0}.Release|x64.ActiveCfg = Release|Any CPU
-		{F8920741-0BB4-4939-A774-0F9059B2B7F0}.Release|x86.ActiveCfg = Release|Any CPU
-		{FD150915-D34F-436A-92C1-80AA505DA754}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD150915-D34F-436A-92C1-80AA505DA754}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD150915-D34F-436A-92C1-80AA505DA754}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{FD150915-D34F-436A-92C1-80AA505DA754}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{FD150915-D34F-436A-92C1-80AA505DA754}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{FD150915-D34F-436A-92C1-80AA505DA754}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{FD150915-D34F-436A-92C1-80AA505DA754}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD150915-D34F-436A-92C1-80AA505DA754}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FD150915-D34F-436A-92C1-80AA505DA754}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{FD150915-D34F-436A-92C1-80AA505DA754}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{FD150915-D34F-436A-92C1-80AA505DA754}.Release|x64.ActiveCfg = Release|Any CPU
-		{FD150915-D34F-436A-92C1-80AA505DA754}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -126,9 +80,6 @@ Global
 		{3A69B42C-907B-4361-840F-92554F9C586E} = {58ABFF54-40C3-4A05-8565-4CAEF523717D}
 		{2ED75FFA-1097-4894-92B6-A096187A6256} = {58ABFF54-40C3-4A05-8565-4CAEF523717D}
 		{A8B854DC-944C-4104-901A-B6E50BCF577E} = {58ABFF54-40C3-4A05-8565-4CAEF523717D}
-		{C38DFFE9-321B-4941-B031-29D718AB5C31} = {F3551EFE-CE32-4033-90A3-84C450A20065}
-		{F8920741-0BB4-4939-A774-0F9059B2B7F0} = {F3551EFE-CE32-4033-90A3-84C450A20065}
-		{FD150915-D34F-436A-92C1-80AA505DA754} = {F3551EFE-CE32-4033-90A3-84C450A20065}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		BuildVersion_UpdateAssemblyVersion = False

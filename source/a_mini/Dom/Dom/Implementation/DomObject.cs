@@ -17,7 +17,7 @@ namespace CsQuery.Implementation
     /// document, doctype)
     /// </summary>
 
-    public abstract class DomObject: IDomObject, IDomNode
+    public abstract class DomObject : IDomObject, IDomNode
     {
 
         #region private properties
@@ -90,7 +90,7 @@ namespace CsQuery.Implementation
         protected DocumentInfo DocInfo;
 
         #endregion
-        
+
         #region public properties
 
         /// <summary>
@@ -117,14 +117,14 @@ namespace CsQuery.Implementation
         /// Gets the identifier of the node name.
         /// </summary>
 
-        public virtual ushort NodeNameID 
+        public virtual ushort NodeNameID
         {
-            get 
+            get
             {
                 // This used to throw an exception; for consistency with NodeName (returning null) changed to 0
                 // 9/22/2012. Caused test failure when integrating validator.nu parser (since everything has a root now)
                 return 0;
-            } 
+            }
         }
 
         /// <summary>
@@ -153,10 +153,12 @@ namespace CsQuery.Implementation
         /// Gets a value indicating whether this object type should be indexed.
         /// </summary>
 
-        public virtual bool IsIndexed { 
-            get { 
-                return false; 
-            } 
+        public virtual bool IsIndexed
+        {
+            get
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -254,7 +256,7 @@ namespace CsQuery.Implementation
         /// <returns>
         /// The path.
         /// </returns>
-        
+
         protected virtual ushort[] GetPath()
         {
 
@@ -272,8 +274,8 @@ namespace CsQuery.Implementation
                 {
                     len <<= 1;
 
-                    var newPath= new ushort[len];
-                    Buffer.BlockCopy(path, 0, newPath, 0, index<<1);
+                    var newPath = new ushort[len];
+                    Buffer.BlockCopy(path, 0, newPath, 0, index << 1);
                     path = newPath;
                 }
 
@@ -283,17 +285,17 @@ namespace CsQuery.Implementation
             // because we obtained the path by traversing backards up the tree, instead of recursing (which
             // will cause a stack overflow & performs a lot worse anyway) we must reverse the array before
             // returning it. 
-            
+
             ushort[] output = new ushort[index];
             int i = 0;
-            
-            while (index>0)
+
+            while (index > 0)
             {
                 output[i++] = path[--index];
             }
 
             return output;
-            
+
         }
         /// <summary>
         /// The DOM for this object. This is obtained by looking at its parents value until it finds a
@@ -311,7 +313,7 @@ namespace CsQuery.Implementation
                 }
                 return _Document;
             }
-          
+
         }
 
         /// <summary>
@@ -492,7 +494,7 @@ namespace CsQuery.Implementation
         /// <summary>
         /// Gets a unique ID for this element among its siblings. THIS METHOD IS OBSOLETE. It has been replaced by NodePath.
         /// </summary>
-        
+
         [Obsolete]
         public virtual char PathID
         {
@@ -505,7 +507,7 @@ namespace CsQuery.Implementation
             }
         }
 
-        
+
         /// <summary>
         /// Gets the depth of the current node.
         /// </summary>
@@ -1064,7 +1066,11 @@ namespace CsQuery.Implementation
 
         public virtual string Render()
         {
-            throw new MyNotImplementException();
+
+
+            //throw new MyNotImplementException();
+            var mytype = this.GetType();
+            return mytype.Name;
             //return Render(OutputFormatters.Default);
         }
 
@@ -1082,7 +1088,7 @@ namespace CsQuery.Implementation
 
         public virtual void Render(IOutputFormatter formatter, TextWriter writer)
         {
-            formatter.Render(this,writer);
+            formatter.Render(this, writer);
         }
 
         /// <summary>
@@ -1153,7 +1159,7 @@ namespace CsQuery.Implementation
             sb.Append(Render(options));
         }
 
-        
+
         /// <summary>
         /// Wrap this element in a CQ object. This is the CsQuery equivalent of the common jQuery
         /// construct $(el). Since there is no default method in C# that we can use to create a similar
@@ -1164,7 +1170,7 @@ namespace CsQuery.Implementation
         /// A new CQ object wrapping this element.
         /// </returns>
 
-         
+
 
         /// <summary>
         /// Clone this element.
@@ -1245,7 +1251,7 @@ namespace CsQuery.Implementation
         /// The element to append.
         /// </param>
 
-        internal virtual void AppendChildUnsafe(IDomObject element) 
+        public virtual void AppendChildUnsafe(IDomObject element)
         {
             throw new InvalidOperationException("This type of element does not have children.");
         }
@@ -1444,7 +1450,7 @@ namespace CsQuery.Implementation
             return false;
         }
 
-      
+
         /// <summary>
         /// Removes an attribute from the specified element.
         /// </summary>
@@ -1629,7 +1635,7 @@ namespace CsQuery.Implementation
         }
 
         #endregion
-        
+
         #region element properties
 
 
@@ -1655,7 +1661,7 @@ namespace CsQuery.Implementation
 
         public virtual IEnumerable<IDomObject> CloneChildren()
         {
-             throw new InvalidOperationException("This is not a Container object.");
+            throw new InvalidOperationException("This is not a Container object.");
         }
 
         /// <summary>
@@ -1780,20 +1786,20 @@ namespace CsQuery.Implementation
 
         protected void UpdateDocumentFlags(IDomDocument document)
         {
-            throw new MyNotImplementException();
-            //_Document = document;
-            //SetDocFlags();
-            //// I think we can get away without resetting children. When removing something from a document,
-            //// you are exclusively going to be adding it to something else. We only need to update the parents
-            //// during the add operation.
+            //throw new MyNotImplementException();
+            _Document = document;
+            SetDocFlags();
+            // I think we can get away without resetting children. When removing something from a document,
+            // you are exclusively going to be adding it to something else. We only need to update the parents
+            // during the add operation.
 
-            //if (HasChildren && _Document != null)
-            //{
-            //    foreach (var item in ChildNodes.Cast<DomObject>())
-            //    {
-            //        item.UpdateDocumentFlags(_Document);
-            //    }
-            //}
+            if (HasChildren && _Document != null)
+            {
+                foreach (var item in ChildNodes)
+                {
+                    ((DomObject)item).UpdateDocumentFlags(_Document);
+                }
+            }
         }
 
         private void SetDocFlags()
@@ -1814,50 +1820,50 @@ namespace CsQuery.Implementation
         #region interface members
 
         /// <summary>
-         /// Makes a deep copy of this object.
-         /// </summary>
-         ///
-         /// <returns>
-         /// A copy of this object.
-         /// </returns>
+        /// Makes a deep copy of this object.
+        /// </summary>
+        ///
+        /// <returns>
+        /// A copy of this object.
+        /// </returns>
 
-         IDomNode IDomNode.Clone()
-         {
-             return Clone();
-         }
+        IDomNode IDomNode.Clone()
+        {
+            return Clone();
+        }
 
-         /// <summary>
-         /// Makes a deep copy of this object.
-         /// </summary>
-         ///
-         /// <returns>
-         /// A copy of this object.
-         /// </returns>
+        /// <summary>
+        /// Makes a deep copy of this object.
+        /// </summary>
+        ///
+        /// <returns>
+        /// A copy of this object.
+        /// </returns>
 
-         object ICloneable.Clone()
-         {
-             return Clone();
-         }
-         /// <summary>
-         /// Compares this IDomObject object to another to determine their relative ordering.
-         /// </summary>
-         ///
-         /// <param name="other">
-         /// Another instance to compare.
-         /// </param>
-         ///
-         /// <returns>
-         /// Negative if this object is less than the other, 0 if they are equal, or positive if this is
-         /// greater.
-         /// </returns>
+        object ICloneable.Clone()
+        {
+            return Clone();
+        }
+        /// <summary>
+        /// Compares this IDomObject object to another to determine their relative ordering.
+        /// </summary>
+        ///
+        /// <param name="other">
+        /// Another instance to compare.
+        /// </param>
+        ///
+        /// <returns>
+        /// Negative if this object is less than the other, 0 if they are equal, or positive if this is
+        /// greater.
+        /// </returns>
 
-         public int CompareTo(IDomObject other)
-         {
-             throw new MyNotImplementException();
-             //return PathKeyComparer.Comparer.Compare(NodePath, other.NodePath);
-         }
+        public int CompareTo(IDomObject other)
+        {
+            throw new MyNotImplementException();
+            //return PathKeyComparer.Comparer.Compare(NodePath, other.NodePath);
+        }
         #endregion
 
-         
+
     }
 }

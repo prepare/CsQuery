@@ -134,38 +134,38 @@ namespace CsQuery.Implementation
 
         internal static DomElement Create(ushort nodeNameId)
         {
-            throw new MyNotImplementException();
-            //switch (nodeNameId)
-            //{
-            //    case HtmlData.tagA:
-            //        return new HtmlAnchorElement();
-            //    case HtmlData.tagFORM:
-            //        return new HtmlFormElement();
-            //    case HtmlData.tagBUTTON:
-            //        return new HTMLButtonElement();
-            //    case HtmlData.tagINPUT:
-            //        return new HTMLInputElement();
-            //    case HtmlData.tagLABEL:
-            //        return new HTMLLabelElement();
-            //    case HtmlData.tagLI:
-            //        return new HTMLLIElement();
-            //    case HtmlData.tagMETER:
-            //        return new HTMLMeterElement();
-            //    case HtmlData.tagOPTION:
-            //        return new HTMLOptionElement();
-            //    case HtmlData.tagPROGRESS:
-            //        return new HTMLProgressElement();
-            //    case HtmlData.tagSELECT:
-            //        return new HTMLSelectElement();
-            //    case HtmlData.tagTEXTAREA:
-            //        return new HTMLTextAreaElement();
-            //    case HtmlData.tagSTYLE:
-            //        return new HTMLStyleElement();
-            //    case HtmlData.tagSCRIPT:
-            //        return new HTMLScriptElement();
-            //    default:
-            //        return new DomElement(nodeNameId);
-            //}
+
+            switch (nodeNameId)
+            {
+                case HtmlData.tagA:
+                    return new HtmlAnchorElement();
+                case HtmlData.tagFORM:
+                    return new HtmlFormElement();
+                case HtmlData.tagBUTTON:
+                    return new HTMLButtonElement();
+                case HtmlData.tagINPUT:
+                    return new HTMLInputElement();
+                case HtmlData.tagLABEL:
+                    return new HTMLLabelElement();
+                case HtmlData.tagLI:
+                    return new HTMLLIElement();
+                case HtmlData.tagMETER:
+                    return new HTMLMeterElement();
+                case HtmlData.tagOPTION:
+                    return new HTMLOptionElement();
+                case HtmlData.tagPROGRESS:
+                    return new HTMLProgressElement();
+                case HtmlData.tagSELECT:
+                    return new HTMLSelectElement();
+                case HtmlData.tagTEXTAREA:
+                    return new HTMLTextAreaElement();
+                case HtmlData.tagSTYLE:
+                    return new HTMLStyleElement();
+                case HtmlData.tagSCRIPT:
+                    return new HTMLScriptElement();
+                default:
+                    return new DomElement(nodeNameId);
+            }
         }
         #endregion
 
@@ -1512,10 +1512,11 @@ namespace CsQuery.Implementation
         /// This object as a string.
         /// </returns>
 
-        public override string ToString()
-        {
-            return ElementHtml();
-        }
+        //public override string ToString()
+        //{
+        //    return 
+        // //   return ElementHtml();
+        //}
 
         // ICSSStyleDeclations
 
@@ -1965,7 +1966,7 @@ namespace CsQuery.Implementation
         /// The attribute for matching.
         /// </returns>
 
-        internal virtual bool TryGetAttributeForMatching(ushort attributeId, out string value)
+        public virtual bool TryGetAttributeForMatching(ushort attributeId, out string value)
         {
             return TryGetAttribute(attributeId, out value);
         }
@@ -2041,7 +2042,7 @@ namespace CsQuery.Implementation
         /// An enumerator.
         /// </returns>
 
-        internal IEnumerable<T> ChildElementsOfTag<T>(ushort nodeNameId)
+        public IEnumerable<T> ChildElementsOfTag<T>(ushort nodeNameId)
         {
             return ChildElementsOfTag<T>(this, nodeNameId);
         }

@@ -164,8 +164,8 @@ namespace CsQuery.Implementation
         public DomDocument(IDomIndex domIndex)
             : base()
         {
-            throw new MyNotImplementException();
-            //DocumentIndex = domIndex ?? CsQuery.Config.DomIndexProvider.GetDomIndex();
+            //throw new MyNotImplementException();
+            DocumentIndex = domIndex;// ?? CsQuery.Config.DomIndexProvider.GetDomIndex();
         }
 
         /// <summary>

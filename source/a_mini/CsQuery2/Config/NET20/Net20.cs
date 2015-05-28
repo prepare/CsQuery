@@ -1,6 +1,9 @@
-﻿#define NET20 
+﻿//#define NET20 
 #if NET20
- 
+namespace System.Linq
+{
+    class dummy { }
+}
 namespace System.Dynamic
 {
     class dummy { }

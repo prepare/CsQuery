@@ -15,20 +15,20 @@ namespace CsQuery
     /// Global configuration and defaults
     /// </summary>
 
-    public static class Config
+    public static class Config2
     {
         #region constructor 
     
-        static Config()
+        static Config2()
         {
-            DefaultConfig = new CsQueryConfig();
+            DefaultConfig = new CsQueryConfig2();
         }
 
         #endregion
 
         #region private properties
 
-        private static CsQueryConfig DefaultConfig;
+        private static CsQueryConfig2 DefaultConfig;
 
         #endregion
 

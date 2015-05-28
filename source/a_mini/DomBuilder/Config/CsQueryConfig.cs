@@ -49,7 +49,7 @@ namespace CsQuery
         /// Internal to avoid Obsolete warning from DomRenderingOptions until we remove it
         /// </summary>
 
-        private Type _DynamicObjectType;
+        //private Type _DynamicObjectType;
 
         /// <summary>
         /// Creates an OutputFormatter using the default options &amp; encoder.

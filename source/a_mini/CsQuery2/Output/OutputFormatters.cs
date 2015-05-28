@@ -74,7 +74,7 @@ namespace CsQuery
         public static IOutputFormatter Default
         {
             get {
-                return Config.OutputFormatter;
+                return Config2.OutputFormatter;
             }
         }
         /// <summary>
@@ -161,7 +161,7 @@ namespace CsQuery
         {
             if (options.HasFlag(DomRenderingOptions.Default))
             {
-                options = CsQuery.Config.DomRenderingOptions | options & ~(DomRenderingOptions.Default);
+                options = CsQuery.Config2.DomRenderingOptions | options & ~(DomRenderingOptions.Default);
             }
         }
     }

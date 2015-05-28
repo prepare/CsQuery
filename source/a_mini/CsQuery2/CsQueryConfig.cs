@@ -15,7 +15,7 @@ namespace CsQuery
     /// Global configuration and defaults
     /// </summary>
 
-    public class CsQueryConfig
+    public class CsQueryConfig2
     {
         #region constructor 
 
@@ -23,7 +23,7 @@ namespace CsQuery
         /// Default constructor; populates the CsQueryConfig object with system default options.
         /// </summary>
 
-        public CsQueryConfig()
+        public CsQueryConfig2()
         {
             DynamicObjectType = typeof(JsObject);
             DomRenderingOptions =   DomRenderingOptions.QuoteAllAttributes;

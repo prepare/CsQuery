@@ -208,7 +208,7 @@ namespace CsQuery.Engine
 
         public int Register(Assembly assembly=null)
         {
-            var CallingAssembly = Support.GetFirstExternalAssembly();
+            var CallingAssembly = Support2.GetFirstExternalAssembly();
             return PopulateFromAssembly(CallingAssembly, "CsQuery.Engine.PseudoClassSelectors", "CsQuery.Extensions");
         }
 
@@ -248,7 +248,7 @@ namespace CsQuery.Engine
                 throw new InvalidOperationException(String.Format("I didn't find the native PseudoClassSelectors in the namespace {0}.",defaultNamespace));
             }
 
-            if (CsQuery.Config.StartupOptions.HasFlag(StartupOptions.LookForExtensions))
+            if (CsQuery.Config2.StartupOptions.HasFlag(StartupOptions.LookForExtensions))
             {
                 Register();
             }

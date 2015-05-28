@@ -1,7 +1,10 @@
 ﻿using System;
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
 using System.Text;
-using CsQuery.StringScanner; 
+using CsQuery.StringScanner;
+using CsQuery.StringScanner.Implementation;
 
 namespace CsQuery.StringScanner
 {
@@ -12,7 +15,7 @@ namespace CsQuery.StringScanner
     /// This permits very fast access to this information since it only needs to be looked up via an
     /// index. Uses an array of 65536 uints = 256K of memory.
     /// </summary>
-    
+
     public static class CharacterData
     {
         #region constructor
@@ -26,7 +29,7 @@ namespace CsQuery.StringScanner
 
         static CharacterData()
         {
-            charsHtmlSpaceArray = charsHtmlSpace.ToCharArray();
+            charsHtmlSpaceArray = charsHtmlSpace.ToArray<char>();
 
             characterFlags = new uint[65536];
             setBit(charsWhitespace, (uint)CharacterType.Whitespace);
@@ -80,7 +83,7 @@ namespace CsQuery.StringScanner
         // U+000D CARRIAGE RETURN (CR).
 
         const string charsHtmlSpace = "\x0020\x0009\x000A\x000C\x000D";
-        
+
         // Add a couple more for non-HTML spec whitespace
         const string charsWhitespace = charsHtmlSpace + "\x00A0\x00C0";
 
@@ -118,10 +121,10 @@ namespace CsQuery.StringScanner
         /// The new character information.
         /// </returns>
 
-        //public static ICharacterInfo CreateCharacterInfo()
-        //{
-        //    return new CharacterInfo();
-        //}
+        public static ICharacterInfo CreateCharacterInfo()
+        {
+            return new CharacterInfo();
+        }
 
         /// <summary>
         /// Creates a new instance of the CharacterInfo class.
@@ -135,10 +138,10 @@ namespace CsQuery.StringScanner
         /// A new CharacterInfo instance.
         /// </returns>
 
-        //public static ICharacterInfo CreateCharacterInfo(char character)
-        //{
-        //    return new CharacterInfo(character);
-        //}
+        public static ICharacterInfo CreateCharacterInfo(char character)
+        {
+            return new CharacterInfo(character);
+        }
 
         /// <summary>
         /// Creates a new StringInfo instance
@@ -148,10 +151,10 @@ namespace CsQuery.StringScanner
         /// The new StringInfo instance
         /// </returns>
 
-        //public static IStringInfo CreateStringInfo()
-        //{
-        //    return new StringInfo();
-        //}
+        public static IStringInfo CreateStringInfo()
+        {
+            return new StringInfo();
+        }
 
         /// <summary>
         /// Creates a new StringInfo instance bound to a string
@@ -165,10 +168,10 @@ namespace CsQuery.StringScanner
         /// The new StringInfo instance.
         /// </returns>
 
-        //public static IStringInfo CreateStringInfo(string text)
-        //{
-        //    return new StringInfo(text);
-        //}
+        public static IStringInfo CreateStringInfo(string text)
+        {
+            return new StringInfo(text);
+        }
 
         /// <summary>
         /// Test whether a character matches a set of flags defined by the paramter
@@ -253,7 +256,7 @@ namespace CsQuery.StringScanner
 
         public static char MatchingBound(char character)
         {
-            
+
             switch (character)
             {
                 case ']':
@@ -271,7 +274,7 @@ namespace CsQuery.StringScanner
                 case '»':
                     return '«';
                 default:
-                    char result =  CloserImpl(character);
+                    char result = CloserImpl(character);
                     if (result == (char)0)
                     {
                         throw new InvalidOperationException("The character '" + character + "' is not a bound.");

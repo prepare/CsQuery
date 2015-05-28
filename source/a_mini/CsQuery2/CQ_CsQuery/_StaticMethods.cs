@@ -30,10 +30,10 @@ namespace CsQuery
         public static DomRenderingOptions DefaultDomRenderingOptions 
         {
             get {
-                return Config.DomRenderingOptions;
+                return Config2.DomRenderingOptions;
             }
             set {
-                Config.DomRenderingOptions = value;
+                Config2.DomRenderingOptions = value;
             }
         }
 
@@ -45,11 +45,11 @@ namespace CsQuery
         public static DocType DefaultDocType {
             get
             {
-                return Config.DocType;
+                return Config2.DocType;
             }
             set
             {
-                Config.DocType = value;
+                Config2.DocType = value;
             }
         }
 

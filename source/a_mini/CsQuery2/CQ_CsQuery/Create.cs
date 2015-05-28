@@ -427,7 +427,7 @@ namespace CsQuery
 
         public static CQ CreateDocumentFromFile(string htmlFile)
         {
-            using (Stream strm = Support.GetFileStream(htmlFile))
+            using (Stream strm = Support2.GetFileStream(htmlFile))
             {
                 return CQ.CreateDocument(strm);
             }
@@ -447,7 +447,7 @@ namespace CsQuery
 
         public static CQ CreateFromFile(string htmlFile)
         {
-            using (Stream strm = Support.GetFileStream(htmlFile))
+            using (Stream strm = Support2.GetFileStream(htmlFile))
             {
                 return CQ.Create(strm);
             }

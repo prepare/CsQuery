@@ -298,7 +298,7 @@ namespace CsQuery
             }
             else if (IsNumericType(value.GetType()))
             {
-                return Support.NumberToDoubleOrInt((IConvertible)value);
+                return Support2.NumberToDoubleOrInt((IConvertible)value);
             }
 
             string stringVal = value.ToString();
@@ -320,7 +320,7 @@ namespace CsQuery
             }
             else if (Double.TryParse(stringVal, out doubleVal))
             {
-                return Support.NumberToDoubleOrInt(doubleVal);
+                return Support2.NumberToDoubleOrInt(doubleVal);
             }
             else if (DateTime.TryParse(stringVal, out dateTimeVal))
             {
@@ -1044,7 +1044,7 @@ namespace CsQuery
 
                     if (typeof(IDictionary<string, object>).IsAssignableFrom(onlyType))
                     {
-                        array = Array.CreateInstance(Config.DynamicObjectType, objectList.Count);
+                        array = Array.CreateInstance(Config2.DynamicObjectType, objectList.Count);
                     }
                     else
                     {
@@ -1053,7 +1053,7 @@ namespace CsQuery
                 }
                 else
                 {
-                    array = Array.CreateInstance(Config.DynamicObjectType, objectList.Count);
+                    array = Array.CreateInstance(Config2.DynamicObjectType, objectList.Count);
                 }
 
                 // copy values from list to the arraty
@@ -1198,7 +1198,7 @@ namespace CsQuery
 
             if (target == null)
             {
-                target = FastActivator.CreateInstance(Config.DynamicObjectType);
+                target = FastActivator.CreateInstance(Config2.DynamicObjectType);
             }
 
             else if (!Objects.IsExtendableType(target))

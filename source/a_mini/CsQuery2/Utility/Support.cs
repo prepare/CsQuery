@@ -15,7 +15,7 @@ namespace CsQuery.Utility
     /// <summary>
     /// Some static methods that didn't fit in anywhere else. 
     /// </summary>
-    public static class Support
+    public static class Support2
     {
         /// <summary>
         /// Read all text of a file, trying to find it from the execution location if not rooted.
@@ -74,12 +74,12 @@ namespace CsQuery.Utility
 
                 string callingAssPath = AppDomain.CurrentDomain.BaseDirectory;
 
-                return  TryGetFilePath(cleanFileName, callingAssPath, out filePath);
+                return TryGetFilePath(cleanFileName, callingAssPath, out filePath);
 
             }
 
         }
-        
+
         /// <summary>
         /// Given a partial path to a folder or file, try to find the full rooted path. The topmost part
         /// of the partial path must be part of the current application path; e.g. there must be an
@@ -130,13 +130,16 @@ namespace CsQuery.Utility
         public static string GetFilePath(string partialPath, string basePath)
         {
             string outputPath;
-            if (TryGetFilePath(partialPath, basePath, out outputPath)) {
+            if (TryGetFilePath(partialPath, basePath, out outputPath))
+            {
                 return outputPath;
-            } else {
+            }
+            else
+            {
 
-                 throw new ArgumentException(String.Format("Unable to find path to \"{0}\" in base path \"{1}\" no matching parts.",
-                    partialPath,
-                    basePath));
+                throw new ArgumentException(String.Format("Unable to find path to \"{0}\" in base path \"{1}\" no matching parts.",
+                   partialPath,
+                   basePath));
             }
         }
 
@@ -182,7 +185,7 @@ namespace CsQuery.Utility
                 string output = string.Join("\\", rootedPath.GetRange(0, start - 1)) + "\\"
                     + string.Join("\\", findPath.GetRange(i - 1, findPath.Count - i + 1));
 
-                outputPath= CleanFilePath(output);
+                outputPath = CleanFilePath(output);
                 return true;
             }
         }
@@ -557,7 +560,7 @@ namespace CsQuery.Utility
             }
         }
 
-     
+
 
         /// <summary>
         ///Convert a string value to a double, or zero if non-numeric
@@ -793,7 +796,8 @@ namespace CsQuery.Utility
         /// The encoded stream.
         /// </returns>
 
-        public static Stream GetEncodedStream(string html, Encoding encoding) {
+        public static Stream GetEncodedStream(string html, Encoding encoding)
+        {
             //return new CombinedStream(new MemoryStream(encoding.GetPreamble()), new MemoryStream(encoding.GetBytes(html)));
             return new MemoryStream(encoding.GetBytes(html));
         }

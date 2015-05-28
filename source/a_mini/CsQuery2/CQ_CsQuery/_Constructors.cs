@@ -47,7 +47,7 @@ namespace CsQuery
             DocType docType = DocType.Default)
         {
             var encoding = new UTF8Encoding(false);
-            using (var stream = Support.GetEncodedStream(html ?? "", encoding))
+            using (var stream = Support2.GetEncodedStream(html ?? "", encoding))
             {
                 CreateNew(this, stream, encoding, parsingMode, parsingOptions, docType);
             }

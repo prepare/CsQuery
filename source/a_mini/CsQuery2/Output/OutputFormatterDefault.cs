@@ -501,7 +501,7 @@ namespace CsQuery.Output
         {
             if (DomRenderingOptions.HasFlag(DomRenderingOptions.Default))
             {
-                DomRenderingOptions = CsQuery.Config.DomRenderingOptions | DomRenderingOptions & ~(DomRenderingOptions.Default);
+                DomRenderingOptions = CsQuery.Config2.DomRenderingOptions | DomRenderingOptions & ~(DomRenderingOptions.Default);
             }
         }
 
@@ -516,7 +516,7 @@ namespace CsQuery.Output
         protected void SetDocType(IDomObject element)
         {
             var docType = element.Document == null ? 
-                CsQuery.Config.DocType : element.Document.DocType;
+                CsQuery.Config2.DocType : element.Document.DocType;
             IsXHTML = docType == DocType.XHTML || docType == DocType.XHTMLStrict;
         }
 

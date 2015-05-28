@@ -20,7 +20,7 @@ namespace CsQuery
         {
             get
             {
-                return Config.HtmlEncoder;
+                return Config2.HtmlEncoder;
             }
         }
 

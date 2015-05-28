@@ -240,7 +240,7 @@ namespace CsQuery.ExtensionMethods.Internal
 
         public static Stream ToStream(this string input, Encoding encoding = null) {
             encoding = encoding ?? new UTF8Encoding(false);
-            return Support.GetEncodedStream(input ?? "", encoding);
+            return Support2.GetEncodedStream(input ?? "", encoding);
         }
 
         ///<summary>

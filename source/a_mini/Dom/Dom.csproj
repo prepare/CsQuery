@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Dom</RootNamespace>
     <AssemblyName>Dom</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,7 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="0_dummy\dummyNS.cs" />
     <Compile Include="Config\enumDomRenderingOptions.cs" />
     <Compile Include="Dom2\IDomIndexProvider.cs" />
     <Compile Include="Dom2\IDomIndexQueue.cs" />
@@ -132,13 +132,32 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringScanner\CharacterData.cs" />
     <Compile Include="StringScanner\enumCharacterType.cs" />
+    <Compile Include="StringScanner\ICharacterInfo.cs" />
+    <Compile Include="StringScanner\IExpectPattern.cs" />
+    <Compile Include="StringScanner\IStringInfo.cs" />
+    <Compile Include="StringScanner\IStringScanner.cs" />
+    <Compile Include="StringScanner\IValueInfo.cs" />
+    <Compile Include="StringScanner\IValueInfoT.cs" />
+    <Compile Include="StringScanner\ExtensionMethods.cs" />
+    <Compile Include="StringScanner\Implementation\CharacterInfo.cs" />
+    <Compile Include="StringScanner\Implementation\ExpectPattern.cs" />
+    <Compile Include="StringScanner\Implementation\StringInfo.cs" />
+    <Compile Include="StringScanner\Implementation\StringScannerEngine.cs" />
+    <Compile Include="StringScanner\MatchFunctions.cs" />
+    <Compile Include="StringScanner\Patterns\Bounded.cs" />
+    <Compile Include="StringScanner\Patterns\CssClassName.cs" />
+    <Compile Include="StringScanner\Patterns\EscapedString.cs" />
+    <Compile Include="StringScanner\Patterns\HTMLAttributeName.cs" />
+    <Compile Include="StringScanner\Patterns\HtmlIDSelector.cs" />
+    <Compile Include="StringScanner\Patterns\HTMLTagSelectorName.cs" />
+    <Compile Include="StringScanner\Patterns\Number.cs" />
+    <Compile Include="StringScanner\Patterns\OptionallyQuoted.cs" />
+    <Compile Include="StringScanner\Patterns\Quoted.cs" />
+    <Compile Include="StringScanner\Scanner.cs" />
     <Compile Include="Utility\Support.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HtmlParserSharp\HtmlParserSharp.csproj">
-      <Project>{FD150915-D34F-436A-92C1-80AA505DA754}</Project>
-      <Name>HtmlParserSharp</Name>
-    </ProjectReference>
+    <Reference Include="System" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

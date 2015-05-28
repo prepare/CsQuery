@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using System.Text;
 
 namespace CsQuery.Implementation
@@ -8,7 +8,7 @@ namespace CsQuery.Implementation
     /// <summary>
     /// A sorted dictionary that allows lookup by range.
     /// </summary>
-    interface IRangeSortedDictionary<TKey,TValue> : IDictionary<TKey[], TValue>
+    public interface IRangeSortedDictionary<TKey, TValue> : IDictionary<TKey[], TValue>
     {
         /// <summary>
         /// Return all keys starting with subKey

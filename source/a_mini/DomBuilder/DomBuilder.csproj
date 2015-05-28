@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DomBuilder</RootNamespace>
     <AssemblyName>DomBuilder</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,6 +54,13 @@
     <Compile Include="Implementation\PathKeyComparer.cs" />
     <Compile Include="Implementation\RangeSortedDictionary.cs" />
     <Compile Include="Implementation\RBTree.cs" />
+    <Compile Include="Output\HtmlEncoderBase.cs" />
+    <Compile Include="Output\HtmlEncoderBasic.cs" />
+    <Compile Include="Output\HtmlEncoderFull.cs" />
+    <Compile Include="Output\HtmlEncoderMinimum.cs" />
+    <Compile Include="Output\HtmlEncoderMinimumNbsp.cs" />
+    <Compile Include="Output\HtmlEncoderNone.cs" />
+    <Compile Include="Output\IHtmlEncoder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -65,9 +73,7 @@
       <Name>HtmlParserSharp2</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Output\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

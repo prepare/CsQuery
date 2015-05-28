@@ -40,7 +40,7 @@ using System.Diagnostics;
 #pragma warning disable 1587 // XML comment is not placed on a valid element
 
 // SortedSet is basically implemented as a reduction of SortedDictionary<K, V>
-#if DEBUG
+#if DEBUG && NET20
 namespace CsQuery.Implementation.Mono
 {
     

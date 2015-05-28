@@ -24,9 +24,9 @@ namespace CsQuery
     public static class CqExtension
     {
         public static CQ Cq(this IDomObject dom)
-        {
-            //TODO: implement here
-            throw new NotSupportedException();
+        {   
+            //TODO review here
+            return new CQ(dom); 
         }
     }
     /// <summary>

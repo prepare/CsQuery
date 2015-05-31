@@ -1048,12 +1048,12 @@ namespace CsQuery.HtmlParser
         /// Decoded html.
         /// </returns>
 
-        public static string HtmlDecode(string html)
-        {
-            throw new MyNotImplementException();
-            //return System.Web.HttpUtility.HtmlDecode(html);
+        //public static string HtmlDecode(string html)
+        //{
+        //    //throw new MyNotImplementException();
+        //    return System.Web.HttpUtility.HtmlDecode(html);
 
-        }
+        //}
         /// <summary>
         /// For testing only - the production code never uses this version.
         /// </summary>

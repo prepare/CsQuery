@@ -128,6 +128,7 @@
     <Compile Include="Implementation\IReadOnlyCollection.cs" />
     <Compile Include="Implementation\IReadOnlyList.cs" />
     <Compile Include="0_dummy\NET20\Net20.cs" />
+    <Compile Include="Internal\ExtensionMethods.cs" />
     <Compile Include="Output\IOutputFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringScanner\CharacterData.cs" />

@@ -18,7 +18,7 @@ namespace CsQuery.Tests.Core.Dom
     [TestFixture, TestClass]
     public class DomDocument_
     {
-
+        
         [Test, TestMethod]
         public void CheckDocumentIndex()
         {

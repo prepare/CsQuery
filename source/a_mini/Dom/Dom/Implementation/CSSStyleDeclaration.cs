@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic; 
+using System.Collections.Generic;
 
-using System.Text; 
+using System.Text;
 using System.IO;
 
 using CsQuery.HtmlParser;
 using CsQuery.StringScanner;
-
+using CsQuery.ExtensionMethods.Internal;
 
 
 namespace CsQuery.Implementation
@@ -24,7 +24,7 @@ namespace CsQuery.Implementation
         /// <summary>
         /// Create a new CSSStyleDeclaration object with no styles.
         /// </summary>
-        
+
         public CSSStyleDeclaration()
         {
 
@@ -242,7 +242,7 @@ namespace CsQuery.Implementation
 
                 return keys;
             }
-        }      
+        }
 
         /// <summary>
         ///Gets the style name values for all the styles in this collection
@@ -250,7 +250,8 @@ namespace CsQuery.Implementation
 
         public ICollection<string> Values
         {
-            get {
+            get
+            {
                 if (HasStyleAttribute)
                 {
                     return Styles.Values;
@@ -313,7 +314,7 @@ namespace CsQuery.Implementation
             }
             set
             {
-                SetStyle("height", value,true);
+                SetStyle("height", value, true);
             }
         }
 
@@ -419,27 +420,27 @@ namespace CsQuery.Implementation
 
         public void AddStyles(string styles, bool strict)
         {
-            throw new MyNotImplementException();
+            // throw new MyNotImplementException();
 
-            //foreach (string style in styles.SplitClean(';'))
-            //{
-            //    int index = style.IndexOf(":");
-            //    string stName;
-            //    string stValue;
-            //    if (index > 0)
-            //    {
-            //        stName = style.Substring(0, index).Trim();
-            //        stValue = style.Substring(index + 1).Trim();
-            //        if (!strict)
-            //        {
-            //            SetRaw(stName, stValue);
-            //        }
-            //        else
-            //        {
-            //            Add(stName, stValue);
-            //        }
-            //    }
-            //}
+            foreach (string style in styles.SplitClean(';'))
+            {
+                int index = style.IndexOf(":");
+                string stName;
+                string stValue;
+                if (index > 0)
+                {
+                    stName = style.Substring(0, index).Trim();
+                    stValue = style.Substring(index + 1).Trim();
+                    if (!strict)
+                    {
+                        SetRaw(stName, stValue);
+                    }
+                    else
+                    {
+                        Add(stName, stValue);
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -562,9 +563,10 @@ namespace CsQuery.Implementation
         public string GetStyle(string name)
         {
             string value = null;
-            if (HasStyleAttribute) {
+            if (HasStyleAttribute)
+            {
                 Styles.TryGetValue(HtmlData.Tokenize(name), out value);
-            } 
+            }
             return value;
         }
 
@@ -678,27 +680,27 @@ namespace CsQuery.Implementation
 
         public double? NumberPart(string style)
         {
-            throw new MyNotImplementException();
+            // throw new MyNotImplementException();
 
-            //string st = GetStyle(style);
-            //if (st == null)
-            //{
-            //    return null;
-            //}
-            //else
-            //{
-            //    IStringScanner scanner = Scanner.Create(st);
-            //    string numString;
-            //    if (scanner.TryGet(MatchFunctions.Number(), out numString))
-            //    {
-            //        double num;
-            //        if (double.TryParse(numString, out num))
-            //        {
-            //            return num;
-            //        }
-            //    }
-            //    return null;
-            //}
+            string st = GetStyle(style);
+            if (st == null)
+            {
+                return null;
+            }
+            else
+            {
+                IStringScanner scanner = Scanner.Create(st);
+                string numString;
+                if (scanner.TryGet(MatchFunctions.Number(), out numString))
+                {
+                    double num;
+                    if (double.TryParse(numString, out num))
+                    {
+                        return num;
+                    }
+                }
+                return null;
+            }
         }
 
         /// <summary>
@@ -755,7 +757,7 @@ namespace CsQuery.Implementation
         {
             return stylesEnumerable().GetEnumerator();
         }
-       
+
 
 
         #endregion
@@ -776,13 +778,13 @@ namespace CsQuery.Implementation
 
         protected string OptionList(CssStyle style)
         {
-            throw new MyNotImplementException();
-            //string list = "";
-            //foreach (string item in style.Options)
-            //{
-            //    list += (list == String.Empty ? String.Empty : ",") + "'" + item + "'";
-            //}
-            //return list;
+            //throw new MyNotImplementException();
+            string list = "";
+            foreach (string item in style.Options)
+            {
+                list += (list == String.Empty ? String.Empty : ",") + "'" + item + "'";
+            }
+            return list;
 
         }
 
@@ -805,13 +807,13 @@ namespace CsQuery.Implementation
         /// A parsed string of the value
         /// </returns>
 
-        protected string ValidateUnitString(string name,string value)
+        protected string ValidateUnitString(string name, string value)
         {
             int pos = 0;
             value = value.Trim();
             StringBuilder outVal = new StringBuilder();
             //TODO: this is not comprehensive.
-            string type = name=="opacity" ? "" : "px";
+            string type = name == "opacity" ? "" : "px";
 
             if (String.IsNullOrEmpty(value))
             {
@@ -933,6 +935,6 @@ namespace CsQuery.Implementation
         {
             return GetEnumerator();
         }
-        #endregion        
+        #endregion
     }
 }

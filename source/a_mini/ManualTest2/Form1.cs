@@ -31,8 +31,7 @@ namespace ManualTest2
                       Encoding.UTF8,
                       CsQuery.HtmlParsingMode.Fragment,
                       CsQuery.HtmlParsingOptions.Default,
-                      CsQuery.DocType.HTML5);
-
+                      CsQuery.DocType.HTML5); 
 
                 this.treeView1.Nodes.Clear();
 

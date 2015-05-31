@@ -17,7 +17,7 @@ namespace CsQuery.Implementation
     /// https://developer.mozilla.org/en/DOM/HTMLOptionsCollection
     /// </url>
 
-    public class HTMLOptionsCollection: IHTMLOptionsCollection
+    public class HTMLOptionsCollection : IHTMLOptionsCollection
     {
         #region constructor
 
@@ -90,7 +90,7 @@ namespace CsQuery.Implementation
         /// <url>
         /// https://developer.mozilla.org/en/DOM/HTMLOptionsCollection.
         /// </url>
-        
+
         [IndexerName("Indexer")]
         public IDomElement this[int index]
         {
@@ -143,8 +143,9 @@ namespace CsQuery.Implementation
         [IndexerName("Indexer")]
         public IDomElement this[string name]
         {
-            get {
-                return NamedItem(name);            
+            get
+            {
+                return NamedItem(name);
             }
         }
 
@@ -168,18 +169,21 @@ namespace CsQuery.Implementation
             }
             set
             {
-                throw new System.MyNotImplementException();
-                //Children().ForEach((item, i) =>
-                //{
-                //    if (i == value)
-                //    {
-                //        item.SetAttribute(HtmlData.SelectedAttrId);
-                //    }
-                //    else if (item.Selected)
-                //    {
-                //        item.RemoveAttribute(HtmlData.SelectedAttrId);
-                //    }
-                //});
+                //throw new System.MyNotImplementException();
+                int i = 0;
+                foreach (var item in this.Children())
+                {
+                    if (i == value)
+                    {
+                        item.SetAttribute(HtmlData.SelectedAttrId);
+                    }
+                    else if (item.Selected)
+                    {
+                        item.RemoveAttribute(HtmlData.SelectedAttrId);
+                    }
+                    i++;
+                }
+                 
             }
         }
 
@@ -211,18 +215,18 @@ namespace CsQuery.Implementation
             }
             set
             {
-                throw new System.MyNotImplementException();
-                //Children().ForEach((item) =>
-                //{
-                //    if (item == value)
-                //    {
-                //        item.SetAttribute(HtmlData.SelectedAttrId);
-                //    }
-                //    else if (item.Selected)
-                //    {
-                //        item.RemoveAttribute(HtmlData.SelectedAttrId);
-                //    }
-                //});
+                ///throw new System.MyNotImplementException();
+                foreach (var item in this.Children())
+                {
+                    if (item == value)
+                    {
+                        item.SetAttribute(HtmlData.SelectedAttrId);
+                    }
+                    else if (item.Selected)
+                    {
+                        item.RemoveAttribute(HtmlData.SelectedAttrId);
+                    }
+                }
             }
         }
 
@@ -239,8 +243,8 @@ namespace CsQuery.Implementation
 
         public IEnumerator<IDomObject> GetEnumerator()
         {
-            throw new System.MyNotImplementException();
-            //return Children().GetEnumerator();
+            //throw new System.MyNotImplementException();
+            return Children().GetEnumerator();
         }
 
         #endregion
@@ -299,9 +303,10 @@ namespace CsQuery.Implementation
                 switch (item.NodeNameID)
                 {
                     case HtmlData.tagOPTION:
-                        yield return new OptionElement {
-                             Element = (DomElement)item,
-                             Disabled = disabled || item.HasAttribute("disabled")
+                        yield return new OptionElement
+                        {
+                            Element = (DomElement)item,
+                            Disabled = disabled || item.HasAttribute("disabled")
                         };
                         break;
 

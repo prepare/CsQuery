@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections; 
+using System.Collections;
 using System.Collections.Generic;
 
 using System.Text;
-
+using CsQuery.ExtensionMethods.Internal;
 
 using CsQuery.HtmlParser;
 using CsQuery.Utility;
@@ -354,14 +354,14 @@ namespace CsQuery.Implementation
 
         private string Get(string name)
         {
-            throw new MyNotImplementException();
+            //throw new MyNotImplementException();
 
-            //name = name.CleanUp();
-            //if (string.IsNullOrEmpty(name))
-            //{
-            //    return null;
-            //}
-            //return Get(HtmlData.Tokenize(name));
+            name = name.CleanUp();
+            if (string.IsNullOrEmpty(name))
+            {
+                return null;
+            }
+            return Get(HtmlData.Tokenize(name));
         }
 
         private string Get(ushort tokenId)
@@ -386,14 +386,14 @@ namespace CsQuery.Implementation
         /// <param name="value"></param>
         private void Set(string name, string value)
         {
-            throw new MyNotImplementException();
+            //throw new MyNotImplementException();
 
-            //if (String.IsNullOrEmpty(name))
-            //{
-            //    throw new ArgumentException("Cannot set an attribute with no name.");
-            //}
-            //name = name.CleanUp();
-            //Set(HtmlData.Tokenize(name), value);
+            if (String.IsNullOrEmpty(name))
+            {
+                throw new ArgumentException("Cannot set an attribute with no name.");
+            }
+            name = name.CleanUp();
+            Set(HtmlData.Tokenize(name), value);
         }
         /// <summary>
         /// Second to last line of defense -- will call back to owning Element for attempts to set class, style, or ID, which are 

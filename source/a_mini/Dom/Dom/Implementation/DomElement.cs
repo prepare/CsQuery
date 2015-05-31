@@ -7,8 +7,7 @@ using System.IO;
 using System.Diagnostics;
 using CsQuery.StringScanner;
 using CsQuery.HtmlParser;
-
-
+using CsQuery.ExtensionMethods.Internal;
 using CsQuery.Output;
 
 namespace CsQuery.Implementation
@@ -725,22 +724,18 @@ namespace CsQuery.Implementation
                 //    var formatter = new FormatDefault();
                 //    StringBuilder sb = new StringBuilder();
                 //    StringWriter writer = new StringWriter(sb);
-                //    formatter.RenderChildren(this, writer);
-
+                //    formatter.RenderChildren(this, writer); 
                 //    return sb.ToString();
                 //}
             }
             set
             {
-                throw new MyNotImplementException();
-
+                throw new MyNotImplementException(); 
                 //if (!InnerHtmlAllowed)
                 //{
                 //    throw new InvalidOperationException(String.Format("You can't set the innerHTML for a {0} element.", NodeName));
                 //}
-                //ChildNodes.Clear();
-
-
+                //ChildNodes.Clear(); 
                 //CQ csq = CQ.CreateFragment(value, NodeName);
                 //ChildNodes.AddRange(csq.Document.ChildNodes);
             }
@@ -1110,33 +1105,28 @@ namespace CsQuery.Implementation
 
         public override bool RemoveClass(string name)
         {
-            throw new MyNotImplementException();
-            //bool result = false;
-            //bool hasClasses = HasClasses;
-            //foreach (string cls in name.SplitClean())
-            //{
-            //    if (HasClass(cls))
-            //    {
-            //        ushort tokenId = HtmlData.TokenizeCaseSensitive(cls);
-            //        _Classes.Remove(tokenId);
-            //        if (!IsDisconnected)
-            //        {
-            //            Document.DocumentIndex.RemoveFromIndex(ClassIndexKey(tokenId), this);
-            //        }
-
-            //        result = true;
-            //    }
-            //}
-            //if (!HasClasses && hasClasses && !IsDisconnected)
-            //{
-            //    Document.DocumentIndex.RemoveFromIndex(AttributeIndexKey(HtmlData.ClassAttrId), this);
-            //}
-
-            //return result;
-        }
-
-
-
+            //throw new MyNotImplementException();
+            bool result = false;
+            bool hasClasses = HasClasses;
+            foreach (string cls in name.SplitClean())
+            {
+                if (HasClass(cls))
+                {
+                    ushort tokenId = HtmlData.TokenizeCaseSensitive(cls);
+                    _Classes.Remove(tokenId);
+                    if (!IsDisconnected)
+                    {
+                        Document.DocumentIndex.RemoveFromIndex(ClassIndexKey(tokenId), this);
+                    } 
+                    result = true;
+                }
+            }
+            if (!HasClasses && hasClasses && !IsDisconnected)
+            {
+                Document.DocumentIndex.RemoveFromIndex(AttributeIndexKey(HtmlData.ClassAttrId), this);
+            } 
+            return result;
+        } 
         /// <summary>
         /// Query if 'tokenId' has attribute.
         /// </summary>
@@ -1147,8 +1137,7 @@ namespace CsQuery.Implementation
         ///
         /// <returns>
         /// true if attribute, false if not.
-        /// </returns>
-
+        /// </returns> 
         public override bool HasAttribute(string name)
         {
             return HasAttribute(HtmlData.Tokenize(name));
@@ -1871,17 +1860,21 @@ namespace CsQuery.Implementation
         protected void SetClassName(string className)
         {
             throw new MyNotImplementException();
-            //if (HasClasses)
-            //{
-            //    foreach (var cls in Classes.ToList())
-            //    {
-            //        RemoveClass(cls);
-            //    }
-            //}
-            //if (!string.IsNullOrEmpty(className))
-            //{
-            //    AddClass(className);
-            //}
+            if (HasClasses)
+            {
+                foreach (var cls in Classes)
+                {
+                    RemoveClass(cls);
+                }
+                //foreach (var cls in Classes.ToList())
+                //{
+                //    RemoveClass(cls);
+                //}
+            }
+            if (!string.IsNullOrEmpty(className))
+            {
+                AddClass(className);
+            }
         }
 
         /// <summary>

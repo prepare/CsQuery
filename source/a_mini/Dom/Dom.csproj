@@ -59,6 +59,7 @@
     <Compile Include="Dom\HtmlElements\IHTMLProgressElement.cs" />
     <Compile Include="Dom\HtmlElements\IHTMLSelectElement.cs" />
     <Compile Include="Dom\HtmlElements\IHTMLTextAreaElement.cs" />
+    <Compile Include="Dom\HtmlStyles.cs" />
     <Compile Include="Dom\IAttributeCollection.cs" />
     <Compile Include="Dom\ICSSRule.cs" />
     <Compile Include="Dom\ICssStyle.cs" />
@@ -159,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -610,60 +610,58 @@ namespace CsQuery.Implementation
 
         public void SetStyle(string name, string value, bool strict)
         {
-            throw new MyNotImplementException();
+            //throw new MyNotImplementException(); 
+            name = Utility.Support.FromCamelCase(name);
+            if (value == null)
+            {
+                Remove(name);
+                return;
+            }
 
-
-            //name = Utility.Support.FromCamelCase(name);
-            //if (value == null)
-            //{
-            //    Remove(name);
-            //    return;
-            //}
-
-            //value = value.Trim().Replace(";", String.Empty);
-            //name = name.Trim();
-            //CssStyle style = null;
-            //if (!HtmlStyles.StyleDefs.TryGetValue(name, out style))
-            //{
-            //    if (strict)
-            //    {
-            //        throw new ArgumentException("The style '" + name + "' is not valid (strict mode)");
-            //    }
-            //}
-            //else
-            //{
-            //    switch (style.Type)
-            //    {
-            //        case CSSStyleType.UnitOption:
-            //            if (!style.Options.Contains(value))
-            //            {
-            //                try
-            //                {
-            //                    value = ValidateUnitString(name, value);
-            //                }
-            //                catch
-            //                {
-            //                    throw new ArgumentException("No valid unit data or option provided for attribue '"
-            //                        + name + "'. Valid options are: " + OptionList(style));
-            //                }
-            //            }
-            //            break;
-            //        case CSSStyleType.Option:
-            //            if (!style.Options.Contains(value))
-            //            {
-            //                throw new ArgumentException("The value '" + value + "' is not allowed for attribute '"
-            //                    + name + "'. Valid options are: " + OptionList(style));
-            //            }
-            //            break;
-            //        case CSSStyleType.Unit:
-            //            value = ValidateUnitString(name, value);
-            //            break;
-            //        default:
-            //            // TODO: other formatting verification
-            //            break;
-            //    }
-            //}
-            //SetRaw(name, value);
+            value = value.Trim().Replace(";", String.Empty);
+            name = name.Trim();
+            CssStyle style = null;
+            if (!CsQuery.HtmlParser.HtmlStyles.StyleDefs.TryGetValue(name, out style))
+            {
+                if (strict)
+                {
+                    throw new ArgumentException("The style '" + name + "' is not valid (strict mode)");
+                }
+            }
+            else
+            {
+                switch (style.Type)
+                {
+                    case CSSStyleType.UnitOption:
+                        if (!style.Options.Contains(value))
+                        {
+                            try
+                            {
+                                value = ValidateUnitString(name, value);
+                            }
+                            catch
+                            {
+                                throw new ArgumentException("No valid unit data or option provided for attribue '"
+                                    + name + "'. Valid options are: " + OptionList(style));
+                            }
+                        }
+                        break;
+                    case CSSStyleType.Option:
+                        if (!style.Options.Contains(value))
+                        {
+                            throw new ArgumentException("The value '" + value + "' is not allowed for attribute '"
+                                + name + "'. Valid options are: " + OptionList(style));
+                        }
+                        break;
+                    case CSSStyleType.Unit:
+                        value = ValidateUnitString(name, value);
+                        break;
+                    default:
+                        // TODO: other formatting verification
+                        break;
+                }
+            }
+            SetRaw(name, value);
         }
 
         /// <summary>

@@ -71,8 +71,16 @@ namespace CsQuery.Implementation
 
         public IDomElement Item(int index)
         {
-            throw new System.MyNotImplementException();
-            //return Children().ElementAt(index);
+            int i = 0;
+            foreach (var elem in Children())
+            {
+                if (i == index)
+                {
+                    return elem;
+                }
+                i++;
+            }
+            return null;
         }
 
         /// <summary>
@@ -183,7 +191,7 @@ namespace CsQuery.Implementation
                     }
                     i++;
                 }
-                 
+
             }
         }
 

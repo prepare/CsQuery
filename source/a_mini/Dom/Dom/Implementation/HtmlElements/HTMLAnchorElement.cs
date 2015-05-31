@@ -54,7 +54,7 @@ namespace CsQuery.Implementation
             }
             set
             {
-                SetAttribute("href",value);
+                SetAttribute("href", value);
             }
         }
 

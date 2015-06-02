@@ -43,6 +43,7 @@ namespace CsQuery.Implementation
         {
             get
             {
+                
                 throw new System.MyNotImplementException();
                 //return SelectOptions().Count();
             }

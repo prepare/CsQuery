@@ -353,9 +353,7 @@ namespace CsQuery.Implementation
         #region private methods
 
         private string Get(string name)
-        {
-            //throw new MyNotImplementException();
-
+        {    
             name = name.CleanUp();
             if (string.IsNullOrEmpty(name))
             {
@@ -386,8 +384,7 @@ namespace CsQuery.Implementation
         /// <param name="value"></param>
         private void Set(string name, string value)
         {
-            //throw new MyNotImplementException();
-
+           
             if (String.IsNullOrEmpty(name))
             {
                 throw new ArgumentException("Cannot set an attribute with no name.");

@@ -420,8 +420,7 @@ namespace CsQuery.Implementation
 
         public void AddStyles(string styles, bool strict)
         {
-            // throw new MyNotImplementException();
-
+            
             foreach (string style in styles.SplitClean(';'))
             {
                 int index = style.IndexOf(":");
@@ -610,7 +609,7 @@ namespace CsQuery.Implementation
 
         public void SetStyle(string name, string value, bool strict)
         {
-            //throw new MyNotImplementException(); 
+            
             name = Utility.Support.FromCamelCase(name);
             if (value == null)
             {
@@ -678,8 +677,7 @@ namespace CsQuery.Implementation
 
         public double? NumberPart(string style)
         {
-            // throw new MyNotImplementException();
-
+        
             string st = GetStyle(style);
             if (st == null)
             {
@@ -776,7 +774,7 @@ namespace CsQuery.Implementation
 
         protected string OptionList(CssStyle style)
         {
-            //throw new MyNotImplementException();
+            
             string list = "";
             foreach (string item in style.Options)
             {

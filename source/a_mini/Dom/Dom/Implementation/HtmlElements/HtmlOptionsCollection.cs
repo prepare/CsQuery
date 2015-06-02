@@ -177,7 +177,7 @@ namespace CsQuery.Implementation
             }
             set
             {
-                //throw new System.MyNotImplementException();
+                
                 int i = 0;
                 foreach (var item in this.Children())
                 {
@@ -223,7 +223,7 @@ namespace CsQuery.Implementation
             }
             set
             {
-                ///throw new System.MyNotImplementException();
+                
                 foreach (var item in this.Children())
                 {
                     if (item == value)
@@ -251,7 +251,7 @@ namespace CsQuery.Implementation
 
         public IEnumerator<IDomObject> GetEnumerator()
         {
-            //throw new System.MyNotImplementException();
+            
             return Children().GetEnumerator();
         }
 
@@ -282,8 +282,10 @@ namespace CsQuery.Implementation
 
         protected IEnumerable<DomElement> Children()
         {
-            throw new System.MyNotImplementException();
-            //return Children(Parent).Select(item => item.Element);
+            foreach (var item in this.Children(this.Parent))
+            {
+                yield return item.Element;
+            }
         }
 
         /// <summary>

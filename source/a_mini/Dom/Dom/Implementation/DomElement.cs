@@ -1859,17 +1859,14 @@ namespace CsQuery.Implementation
 
         protected void SetClassName(string className)
         {
-            throw new MyNotImplementException();
+            
             if (HasClasses)
             {
                 foreach (var cls in Classes)
                 {
                     RemoveClass(cls);
                 }
-                //foreach (var cls in Classes.ToList())
-                //{
-                //    RemoveClass(cls);
-                //}
+                
             }
             if (!string.IsNullOrEmpty(className))
             {

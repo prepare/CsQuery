@@ -1050,7 +1050,7 @@ namespace CsQuery.HtmlParser
 
         //public static string HtmlDecode(string html)
         //{
-        //    //throw new MyNotImplementException();
+        //    
         //    return System.Web.HttpUtility.HtmlDecode(html);
 
         //}

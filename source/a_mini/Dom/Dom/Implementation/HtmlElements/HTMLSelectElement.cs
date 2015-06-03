@@ -43,9 +43,13 @@ namespace CsQuery.Implementation
         {
             get
             {
-                
-                throw new System.MyNotImplementException();
-                //return SelectOptions().Count();
+
+                int i = 0;
+                foreach (var item in this.SelectOptions())
+                {
+                    i++;
+                }
+                return i;
             }
         }
 

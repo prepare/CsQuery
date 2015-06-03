@@ -730,7 +730,7 @@ namespace CsQuery.Implementation
             }
             set
             {
-                throw new MyNotImplementException(); 
+                throw new MyNotImplementException();
                 //if (!InnerHtmlAllowed)
                 //{
                 //    throw new InvalidOperationException(String.Format("You can't set the innerHTML for a {0} element.", NodeName));
@@ -801,12 +801,9 @@ namespace CsQuery.Implementation
                 else
                 {
                     StringBuilder sb = new StringBuilder();
-
-                    foreach (var item in GetInnerText(ChildNodes))
-                    {
-                        sb.Append(item);
-                    }
-
+                    LatestTextNodeKind lastestTextNodeKind = LatestTextNodeKind.NULL;
+                    GetInnerText(this.ChildNodes, sb, ref lastestTextNodeKind);
+                    
                     return sb.ToString();
                 }
             }
@@ -1105,7 +1102,7 @@ namespace CsQuery.Implementation
 
         public override bool RemoveClass(string name)
         {
-            //throw new MyNotImplementException();
+
             bool result = false;
             bool hasClasses = HasClasses;
             foreach (string cls in name.SplitClean())
@@ -1117,16 +1114,16 @@ namespace CsQuery.Implementation
                     if (!IsDisconnected)
                     {
                         Document.DocumentIndex.RemoveFromIndex(ClassIndexKey(tokenId), this);
-                    } 
+                    }
                     result = true;
                 }
             }
             if (!HasClasses && hasClasses && !IsDisconnected)
             {
                 Document.DocumentIndex.RemoveFromIndex(AttributeIndexKey(HtmlData.ClassAttrId), this);
-            } 
+            }
             return result;
-        } 
+        }
         /// <summary>
         /// Query if 'tokenId' has attribute.
         /// </summary>
@@ -1592,7 +1589,7 @@ namespace CsQuery.Implementation
 
         #region private methods
 
-        private bool isWhitespace(string what)
+        static bool isWhitespace(string what)
         {
             return what == "" || what == " " || what == Environment.NewLine;
         }
@@ -1654,15 +1651,98 @@ namespace CsQuery.Implementation
         /// <returns>
         /// An enumerator that allows foreach to be used to process get inner text in this collection.
         /// </returns>
-
-        private IEnumerable<string> GetInnerText(IEnumerable<IDomObject> nodes)
+        enum LatestTextNodeKind
         {
-            throw new MyNotImplementException();
+            NULL,
+            Text,
+            WhiteSpace,
+            NewLine
+        }
 
+        static void GetInnerText(IEnumerable<IDomObject> nodes, StringBuilder stBuilder,
+            ref LatestTextNodeKind latestTextNodeKind)
+        {
+            //recursive
+            string newline = Environment.NewLine;
+            foreach (var el in nodes)
+            {
+                if (latestTextNodeKind != LatestTextNodeKind.NewLine &&
+                    stBuilder.Length > 0 &&
+                    HtmlData.IsBlock(el.NodeNameID))
+                {
+                    if (latestTextNodeKind == LatestTextNodeKind.WhiteSpace)
+                    {
+                        //remove last one
+                        stBuilder.Length--;
+                    }
+                    stBuilder.Append(newline);
+                    latestTextNodeKind = LatestTextNodeKind.NewLine;
+                }
+
+                if (el.HasChildren)
+                {
+                    //recursive
+                    GetInnerText(el.ChildNodes, stBuilder, ref latestTextNodeKind);
+                }
+                else
+                {
+                    var parentNodeId = el.ParentNode.NodeNameID;
+                    switch (parentNodeId)
+                    {
+                        case HtmlData.tagSCRIPT:
+                        case HtmlData.tagSTYLE:
+                        case HtmlData.tagTEXTAREA:
+                            return;
+                    }
+                    //----------------------------------------
+
+                    switch (el.NodeType)
+                    {
+                        case NodeType.TEXT_NODE:
+                            var clean = el.NodeValue.Trim();
+
+                            if (!isWhitespace(clean))
+                            {
+                                stBuilder.Append(clean);
+                                //list.Add(clean);
+                                // add a single whitespace to replace any trailing whitespace
+                                latestTextNodeKind = LatestTextNodeKind.Text;
+                                if (el.NodeValue.TrimEnd() != el.NodeValue)
+                                {
+                                    stBuilder.Append(' ');
+                                    latestTextNodeKind = LatestTextNodeKind.WhiteSpace;
+                                }
+
+                            }
+                            else if (stBuilder.Length > 0 && latestTextNodeKind != LatestTextNodeKind.WhiteSpace)
+                            {
+                                //this is whitespace
+                                stBuilder.Append(' ');
+                                latestTextNodeKind = LatestTextNodeKind.WhiteSpace;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+            }
+            //// replace last trailing whitespace with newline
+            if (stBuilder.Length > 0 && latestTextNodeKind == LatestTextNodeKind.WhiteSpace)
+            {
+                stBuilder.Length--;
+                stBuilder.Append(newline);
+                latestTextNodeKind = LatestTextNodeKind.NewLine;
+            }
+
+
+            //if (content.Count > 0 && isWhitespace(content[content.Count - 1]))
+            //{
+            //    content[content.Count - 1] = Environment.NewLine;
+            //}
 
             //var content = new List<string>();
             //Stack<IDomObject> stack = new Stack<IDomObject>(nodes.Reverse());
-
 
             //while (stack.Count > 0)
             //{
@@ -1726,37 +1806,7 @@ namespace CsQuery.Implementation
             }
         }
 
-        private void AddOwnText_InnerText(List<string> list, IDomObject obj)
-        {
-            var parentNodeId = obj.ParentNode.NodeNameID;
-            if (parentNodeId == HtmlData.tagSCRIPT || parentNodeId == HtmlData.tagSTYLE || parentNodeId == HtmlData.tagTEXTAREA)
-            {
-                return;
-            }
 
-            switch (obj.NodeType)
-            {
-                case NodeType.TEXT_NODE:
-                    var clean = obj.NodeValue.Trim();
-
-                    if (!isWhitespace(clean))
-                    {
-                        list.Add(clean);
-                        // add a single whitespace to replace any trailing whitespace
-                        if (obj.NodeValue.TrimEnd() != obj.NodeValue)
-                        {
-                            list.Add(" ");
-                        }
-                    }
-                    else if (list.Count > 0 && !isWhitespace(list[list.Count - 1]))
-                    {
-                        list.Add(" ");
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
 
         private void SetNodeName(string nodeName)
         {
@@ -1859,14 +1909,14 @@ namespace CsQuery.Implementation
 
         protected void SetClassName(string className)
         {
-            
+
             if (HasClasses)
             {
                 foreach (var cls in Classes)
                 {
                     RemoveClass(cls);
                 }
-                
+
             }
             if (!string.IsNullOrEmpty(className))
             {

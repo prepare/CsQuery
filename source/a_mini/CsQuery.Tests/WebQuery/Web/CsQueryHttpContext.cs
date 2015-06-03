@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.IO;
 using System.Threading;
-using System.Web.Script.Serialization;
+//using System.Web.Script.Serialization;
 using CsQuery.ExtensionMethods;
 using CsQuery.ExtensionMethods.Internal;
 

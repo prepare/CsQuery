@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Text.RegularExpressions;
 using System.Linq;
-using System.Web.Script.Serialization;
+//using System.Web.Script.Serialization;
 using System.Dynamic;
 using System.Text;
 using System.Reflection;
@@ -19,7 +19,7 @@ namespace CsQuery.ExtensionMethods.Internal
     /// Extension methods used by CsQuery but not specialized enough to be considered useful for clients; therefore
     /// in a separate namespace.
     /// </summary>
-    public static class ExtensionMethods
+    public static class ExtensionMethods2
     {
         #region Enums
 

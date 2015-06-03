@@ -17,7 +17,7 @@ namespace CsQuery.Implementation
     /// https://developer.mozilla.org/en/DOM/HTMLOptionsCollection
     /// </url>
 
-    public class HTMLOptionsCollection: IHTMLOptionsCollection
+    public class HTMLOptionsCollection : IHTMLOptionsCollection
     {
         #region constructor
 
@@ -71,8 +71,16 @@ namespace CsQuery.Implementation
 
         public IDomElement Item(int index)
         {
-            throw new System.MyNotImplementException();
-            //return Children().ElementAt(index);
+            int i = 0;
+            foreach (var elem in Children())
+            {
+                if (i == index)
+                {
+                    return elem;
+                }
+                i++;
+            }
+            return null;
         }
 
         /// <summary>
@@ -90,7 +98,7 @@ namespace CsQuery.Implementation
         /// <url>
         /// https://developer.mozilla.org/en/DOM/HTMLOptionsCollection.
         /// </url>
-        
+
         [IndexerName("Indexer")]
         public IDomElement this[int index]
         {
@@ -143,8 +151,9 @@ namespace CsQuery.Implementation
         [IndexerName("Indexer")]
         public IDomElement this[string name]
         {
-            get {
-                return NamedItem(name);            
+            get
+            {
+                return NamedItem(name);
             }
         }
 
@@ -168,18 +177,21 @@ namespace CsQuery.Implementation
             }
             set
             {
-                throw new System.MyNotImplementException();
-                //Children().ForEach((item, i) =>
-                //{
-                //    if (i == value)
-                //    {
-                //        item.SetAttribute(HtmlData.SelectedAttrId);
-                //    }
-                //    else if (item.Selected)
-                //    {
-                //        item.RemoveAttribute(HtmlData.SelectedAttrId);
-                //    }
-                //});
+                
+                int i = 0;
+                foreach (var item in this.Children())
+                {
+                    if (i == value)
+                    {
+                        item.SetAttribute(HtmlData.SelectedAttrId);
+                    }
+                    else if (item.Selected)
+                    {
+                        item.RemoveAttribute(HtmlData.SelectedAttrId);
+                    }
+                    i++;
+                }
+
             }
         }
 
@@ -211,18 +223,18 @@ namespace CsQuery.Implementation
             }
             set
             {
-                throw new System.MyNotImplementException();
-                //Children().ForEach((item) =>
-                //{
-                //    if (item == value)
-                //    {
-                //        item.SetAttribute(HtmlData.SelectedAttrId);
-                //    }
-                //    else if (item.Selected)
-                //    {
-                //        item.RemoveAttribute(HtmlData.SelectedAttrId);
-                //    }
-                //});
+                
+                foreach (var item in this.Children())
+                {
+                    if (item == value)
+                    {
+                        item.SetAttribute(HtmlData.SelectedAttrId);
+                    }
+                    else if (item.Selected)
+                    {
+                        item.RemoveAttribute(HtmlData.SelectedAttrId);
+                    }
+                }
             }
         }
 
@@ -239,8 +251,8 @@ namespace CsQuery.Implementation
 
         public IEnumerator<IDomObject> GetEnumerator()
         {
-            throw new System.MyNotImplementException();
-            //return Children().GetEnumerator();
+            
+            return Children().GetEnumerator();
         }
 
         #endregion
@@ -270,8 +282,10 @@ namespace CsQuery.Implementation
 
         protected IEnumerable<DomElement> Children()
         {
-            throw new System.MyNotImplementException();
-            //return Children(Parent).Select(item => item.Element);
+            foreach (var item in this.Children(this.Parent))
+            {
+                yield return item.Element;
+            }
         }
 
         /// <summary>
@@ -299,9 +313,10 @@ namespace CsQuery.Implementation
                 switch (item.NodeNameID)
                 {
                     case HtmlData.tagOPTION:
-                        yield return new OptionElement {
-                             Element = (DomElement)item,
-                             Disabled = disabled || item.HasAttribute("disabled")
+                        yield return new OptionElement
+                        {
+                            Element = (DomElement)item,
+                            Disabled = disabled || item.HasAttribute("disabled")
                         };
                         break;
 

@@ -203,7 +203,6 @@
     <Compile Include="HtmlParser.ParserAndTreeBuilders\SimpleHtmlParser.cs" />
     <Compile Include="HtmlParser.ParserAndTreeBuilders\XmlTreeBuilder.cs" />
     <Compile Include="HtmlParser\CsQueryTreeBuilder.cs" />
-    <Compile Include="HtmlParser\HtmlStyles.cs" />
     <Compile Include="HttpWebAdapters\IHttpWebRequest.cs" />
     <Compile Include="HttpWebAdapters\IHttpWebRequestFactory.cs" />
     <Compile Include="HttpWebAdapters\IHttpWebResponse.cs" />

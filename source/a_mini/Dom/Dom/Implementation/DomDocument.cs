@@ -66,77 +66,7 @@ namespace CsQuery.Implementation
             }
             doc.Populate(elements);
             return doc;
-        }
-
-        /// <summary>
-        /// Creates a new DomDocument (or derived) object
-        /// </summary>
-        ///
-        /// <param name="html">
-        /// The HTML source for the document
-        /// </param>
-        /// <param name="parsingMode">
-        /// (optional) the parsing mode.
-        /// </param>
-        /// <param name="parsingOptions">
-        /// (optional) options for controlling the parsing.
-        /// </param>
-        /// <param name="docType">
-        /// The DocType for this document.
-        /// </param>
-        ///
-        /// <returns>
-        /// A new IDomDocument object
-        /// </returns>
-
-        public static IDomDocument Create(string html, 
-            HtmlParsingMode parsingMode = HtmlParsingMode.Auto,
-            HtmlParsingOptions parsingOptions = HtmlParsingOptions.Default,
-            DocType docType = DocType.Default)
-        {
-            throw new MyNotImplementException();
-            //var encoding = Encoding.UTF8;
-
-            //using (var stream = new MemoryStream(encoding.GetBytes(html)))
-            //{
-            //    return ElementFactory.Create(stream, encoding, parsingMode, parsingOptions, docType);
-            //}
-        }
-
-        /// <summary>
-        /// Creates a new DomDocument (or derived) object.
-        /// </summary>
-        ///
-        /// <param name="html">
-        /// The HTML source for the document.
-        /// </param>
-        /// <param name="encoding">
-        /// (optional) the character set encoding.
-        /// </param>
-        /// <param name="parsingMode">
-        /// (optional) the HTML parsing mode.
-        /// </param>
-        /// <param name="parsingOptions">
-        /// (optional) options for controlling the parsing.
-        /// </param>
-        /// <param name="docType">
-        /// The DocType for this document.
-        /// </param>
-        ///
-        /// <returns>
-        /// A new IDomDocument object.
-        /// </returns>
-
-        public static IDomDocument Create(Stream html, 
-            Encoding encoding=null,
-            HtmlParsingMode parsingMode= HtmlParsingMode.Content,
-            HtmlParsingOptions parsingOptions= HtmlParsingOptions.Default,
-            DocType docType = DocType.Default)
-        {
-            //
-            throw new MyNotImplementException();
-            //return ElementFactory.Create(html, encoding,parsingMode,parsingOptions, docType);
-        }
+        } 
 
         #endregion
 
@@ -163,8 +93,7 @@ namespace CsQuery.Implementation
 
         public DomDocument(IDomIndex domIndex)
             : base()
-        {
-            //throw new MyNotImplementException();
+        { 
             DocumentIndex = domIndex;// ?? CsQuery.Config.DomIndexProvider.GetDomIndex();
         }
 

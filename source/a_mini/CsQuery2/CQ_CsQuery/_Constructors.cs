@@ -41,9 +41,9 @@ namespace CsQuery
         /// (optional) type of the document.
         /// </param>
 
-        public CQ(string html, 
+        public CQ(string html,
             HtmlParsingMode parsingMode = HtmlParsingMode.Auto,
-            HtmlParsingOptions parsingOptions=HtmlParsingOptions.Default,
+            HtmlParsingOptions parsingOptions = HtmlParsingOptions.Default,
             DocType docType = DocType.Default)
         {
             var encoding = new UTF8Encoding(false);
@@ -74,15 +74,15 @@ namespace CsQuery
         /// (optional) type of the document.
         /// </param>
 
-        public CQ(Stream html, 
+        public CQ(Stream html,
             Encoding encoding,
-            HtmlParsingMode parsingMode = HtmlParsingMode.Auto, 
-            HtmlParsingOptions parsingOptions =HtmlParsingOptions.Default,
+            HtmlParsingMode parsingMode = HtmlParsingMode.Auto,
+            HtmlParsingOptions parsingOptions = HtmlParsingOptions.Default,
             DocType docType = DocType.Default)
         {
 
             CreateNew(this, html, encoding, parsingMode, parsingOptions, docType);
-            
+
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace CsQuery
             Encoding encoding = Encoding.UTF8;
 
             var stream = new MemoryStream(encoding.GetBytes(html.ReadToEnd()));
-            CreateNew(this, stream, encoding,parsingMode, parsingOptions, docType);
+            CreateNew(this, stream, encoding, parsingMode, parsingOptions, docType);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace CsQuery
 
         public CQ(string selector, CQ context)
         {
-            ConfigureNewInstance(selector,context);
+            ConfigureNewInstance(selector, context);
         }
 
         /// <summary>
@@ -227,9 +227,9 @@ namespace CsQuery
             AttrSet(css);
         }
 
-        
 
-       
+
+
         /// <summary>
         /// Create a new CsQuery object from a set of DOM elements, assigning the 2nd parameter as a context for this object.
         /// </summary>
@@ -243,10 +243,10 @@ namespace CsQuery
 
         public CQ(IEnumerable<IDomObject> elements, CQ context)
         {
-            ConfigureNewInstance(this,elements, context);
+            ConfigureNewInstance(this, elements, context);
         }
-       
-    
+
+
         #endregion
 
         #region implicit constructors
@@ -331,7 +331,8 @@ namespace CsQuery
           HtmlParsingOptions parsingOptions,
           DocType docType)
         {
-            target.Document = DomDocument.Create(html, encoding, parsingMode,parsingOptions, docType);
+
+            target.Document = DomDocHelper.Create(html, encoding, parsingMode, parsingOptions, docType);
 
             //  enumerate ChildNodes when creating a new fragment to be sure the selection set only
             //  reflects the original document. 
@@ -361,7 +362,7 @@ namespace CsQuery
           string context,
           DocType docType)
         {
-            target.Document = DomFragment.Create(html, context, docType);
+            target.Document = DomDocHelper.CreateDocFragment(html, context, docType);
 
             //  enumerate ChildNodes when creating a new fragment to be sure the selection set only
             //  reflects the original document. 
@@ -374,7 +375,7 @@ namespace CsQuery
             var cq = NewCqUnbound();
             Encoding encoding = Encoding.UTF8;
             var stream = new MemoryStream(encoding.GetBytes(html));
-            CreateNew(cq, stream, encoding,HtmlParsingMode.Auto, HtmlParsingOptions.Default, DocType.Default);
+            CreateNew(cq, stream, encoding, HtmlParsingMode.Auto, HtmlParsingOptions.Default, DocType.Default);
             return cq;
         }
 
@@ -475,7 +476,7 @@ namespace CsQuery
             dom.CsQueryParent = context;
             dom.SetSelection(element, SelectionSetOrder.OrderAdded);
         }
-        
+
         #endregion
     }
 }

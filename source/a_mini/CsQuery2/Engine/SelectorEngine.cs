@@ -12,7 +12,7 @@ namespace CsQuery.Engine
     internal class SelectorEngine
     {
         #region constructor
-        
+
         public SelectorEngine(IDomDocument document, Selector selector)
         {
             Document = document;
@@ -24,14 +24,14 @@ namespace CsQuery.Engine
         #region private properties
 
         //private static OutputSetComparer outputSetComparer = new OutputSetComparer();
-        
+
         private List<SelectorClause> ActiveSelectors;
         private int activeSelectorId;
 
         private enum IndexMode
         {
             None = 0,
-            Basic  = 1,
+            Basic = 1,
             Subselect = 2
         }
 
@@ -80,7 +80,7 @@ namespace CsQuery.Engine
 
             HashSet<IDomObject> output = new HashSet<IDomObject>();
 
-            if (Selector == null )
+            if (Selector == null)
             {
                 throw new ArgumentNullException("The selector cannot be null.");
             }
@@ -93,15 +93,14 @@ namespace CsQuery.Engine
             ActiveSelectors = new List<SelectorClause>(Selector);
 
             // First just check if we ended up here with an HTML selector; if so, hand it off.
-            
+
             var firstSelector = ActiveSelectors[0];
             if (firstSelector.SelectorType == SelectorType.HTML)
             {
-                return CsQuery.Implementation.
-                    DomDocument.Create(firstSelector.Html, HtmlParsingMode.Fragment)
+                return CsQuery.Implementation.DomDocHelper.Create(firstSelector.Html, HtmlParsingMode.Fragment)
                         .ChildNodes
                         .ToList();
-            } 
+            }
 
             // this holds any results that carried over from the previous loop for chaining
 
@@ -109,25 +108,28 @@ namespace CsQuery.Engine
 
             // this is the source from which selections are made in a given iteration; it could be the DOM
             // root, a context, or the previous result set. 
-            
-            IEnumerable<IDomObject> selectionSource=null;
+
+            IEnumerable<IDomObject> selectionSource = null;
 
             // Disable the index if there is no context (e.g. disconnected elements)
             // or if the first element is not indexed, or the context is not from the same document as this
             // selector is bound. Determine which features can be used for this query by casting the index
             // to the known interfaces. 
 
-            
+
             bool useIndex;
-            if (context.IsNullOrEmpty()) {
+            if (context.IsNullOrEmpty())
+            {
                 useIndex = true;
-            } else {
+            }
+            else
+            {
                 IDomObject first = context.First();
-                useIndex = !first.IsDisconnected && first.IsIndexed && first.Document==Document;
+                useIndex = !first.IsDisconnected && first.IsIndexed && first.Document == Document;
             }
 
-            IDomIndexRanged rangedIndex=null;
-            IDomIndexSimple simpleIndex=null;
+            IDomIndexRanged rangedIndex = null;
+            IDomIndexSimple simpleIndex = null;
 
             if (useIndex)
             {
@@ -140,13 +142,13 @@ namespace CsQuery.Engine
 
                 var selector = ActiveSelectors[activeSelectorId].Clone();
 
-                if (lastResult != null && 
+                if (lastResult != null &&
                     (selector.CombinatorType == CombinatorType.Root || selector.CombinatorType == CombinatorType.Context))
                 {
                     // we will alter the selector during each iteration to remove the parts that have already been
                     // parsed, so use a copy. This is a selector that was chained with the selector grouping
                     // combinator "," -- we always output the results so far when beginning a new group. 
-                    
+
                     output.AddRange(lastResult);
                     lastResult = null;
                 }
@@ -164,7 +166,7 @@ namespace CsQuery.Engine
                     selectionSource = GetSelectionSource(selector, context, lastResult);
                     lastResult = null;
                 }
-                
+
                 List<ushort> key = new List<ushort>();
                 SelectorType removeSelectorType = 0;
 
@@ -172,7 +174,7 @@ namespace CsQuery.Engine
 
                 int depth = 0;
                 bool descendants = true;
-                    
+
                 switch (selector.TraversalType)
                 {
                     case TraversalType.Child:
@@ -206,7 +208,7 @@ namespace CsQuery.Engine
 
                     // We don't want to use the index for "NotEquals" selectors because a missing attribute
                     // is considered a valid match
-                    
+
                     if (selector.SelectorType.HasFlag(SelectorType.AttributeValue)
                         && selector.AttributeSelectorType != AttributeSelectorType.NotExists
                         && selector.AttributeSelectorType != AttributeSelectorType.NotEquals)
@@ -216,7 +218,7 @@ namespace CsQuery.Engine
 
                         // AttributeValue must still be matched manually - so remove this flag only if the
                         // selector is conclusive without further checking
-                        
+
                         if (selector.AttributeSelectorType == AttributeSelectorType.Exists)
                         {
                             removeSelectorType = SelectorType.AttributeValue;
@@ -226,19 +228,19 @@ namespace CsQuery.Engine
                     {
                         key.Add('+');
                         key.Add(HtmlData.Tokenize(selector.Tag));
-                        removeSelectorType=SelectorType.Tag;
+                        removeSelectorType = SelectorType.Tag;
                     }
                     else if (selector.SelectorType.HasFlag(SelectorType.ID))
                     {
                         key.Add('#');
                         key.Add(HtmlData.TokenizeCaseSensitive(selector.ID));
-                        removeSelectorType=SelectorType.ID;
+                        removeSelectorType = SelectorType.ID;
                     }
                     else if (selector.SelectorType.HasFlag(SelectorType.Class))
                     {
                         key.Add('.');
                         key.Add(HtmlData.TokenizeCaseSensitive(selector.Class));
-                        removeSelectorType=SelectorType.Class;
+                        removeSelectorType = SelectorType.Class;
                     }
                 }
 
@@ -247,32 +249,32 @@ namespace CsQuery.Engine
 
                 IEnumerable<IDomObject> result = null;
 
-                if (key.Count>0)
+                if (key.Count > 0)
                 {
                     // This is the main index access point: if we have an index key, we'll get as much as we can from the index.
                     // Anything else will be handled manually.
 
-                  
-       
+
+
                     if (selectionSource == null)
                     {
                         // we don't need to test for index features at this point; if canUseBasicIndex = false and we
                         // are here, then the prior logic dictates that the ranged index is available. But always use
                         // the simple index if that's all we need because it could be faster. 
-                        
+
                         result = simpleIndex.QueryIndex(key.ToArray());
                     }
                     else
                     {
                         HashSet<IDomObject> elementMatches = new HashSet<IDomObject>();
                         result = elementMatches;
-                        
+
                         foreach (IDomObject obj in selectionSource)
                         {
 
                             var subKey = key.Concat(HtmlData.indexSeparator).Concat(obj.NodePath).ToArray();
-                            
-                            var matches = rangedIndex.QueryIndex(subKey,depth, descendants);
+
+                            var matches = rangedIndex.QueryIndex(subKey, depth, descendants);
 
                             elementMatches.AddRange(matches);
                         }
@@ -283,29 +285,29 @@ namespace CsQuery.Engine
                     // Special case for attribute selectors: when Attribute Value attribute selector is present, we
                     // still need to filter for the correct value afterwards. But we need to change the traversal
                     // type because any nodes with the correct attribute type have already been selected. 
-                    
+
                     if (selector.SelectorType.HasFlag(SelectorType.AttributeValue))
                     {
                         selector.TraversalType = TraversalType.Filter;
                     }
-                    
+
                 }
-             
+
 
                 // If any selectors were not handled via the index, match them manually
-                
+
                 if (selector.SelectorType != 0)
                 {
-      
+
                     // if there are no temporary results (b/c there was no indexed selector) then use selection
                     // source instead (e.g. start from the same point that the index would have) 
 
                     result = GetMatches(result ?? selectionSource ?? Document.ChildElements, selector);
                 }
-                
+
                 lastResult = lastResult == null ?
-                    result : lastResult.Concat(result); 
-                
+                    result : lastResult.Concat(result);
+
             }
 
             // After the loop has finished, output any results from the last iteration.
@@ -369,8 +371,8 @@ namespace CsQuery.Engine
         protected IEnumerable<IDomObject> GetSelectionSource(SelectorClause clause,
             IEnumerable<IDomObject> context, IEnumerable<IDomObject> lastResult)
         {
-         
-            IEnumerable<IDomObject> selectionSource=null;
+
+            IEnumerable<IDomObject> selectionSource = null;
             IEnumerable<IDomObject> interimSelectionSource = null;
 
             if (clause.CombinatorType != CombinatorType.Chained)
@@ -384,7 +386,7 @@ namespace CsQuery.Engine
             }
 
             // If the selector used the adjacent combinator, grab the next element for each
-            
+
             if (interimSelectionSource != null)
             {
                 if (clause.TraversalType == TraversalType.Adjacent || clause.TraversalType == TraversalType.Sibling)
@@ -422,23 +424,23 @@ namespace CsQuery.Engine
         {
             // Maintain a hashset of every element already searched. Since result sets frequently contain items which are
             // children of other items in the list, we would end up searching the tree repeatedly
-            
+
             HashSet<IDomObject> uniqueElements = null;
 
             // The processing stack
-            
+
             Stack<MatchElement> stack = null;
 
             // The source list for the current iteration
 
             IEnumerable<IDomObject> curList = source;
-            
+
             // the results obtained so far in this iteration
 
             HashSet<IDomObject> temporaryResults = new HashSet<IDomObject>();
 
             // The unique list has to be reset for each sub-selector
-            
+
             uniqueElements = new HashSet<IDomObject>();
 
 
@@ -455,35 +457,36 @@ namespace CsQuery.Engine
 
             else if (selector.SelectorType.HasFlag(SelectorType.PseudoClass))
             {
-                if (selector.IsResultListPosition) {
+                if (selector.IsResultListPosition)
+                {
                     return GetResultPositionMatches(curList, selector);
-                } 
-                
+                }
+
             }
             else if (selector.SelectorType.HasFlag(SelectorType.All))
             {
                 return GetAllChildOrDescendants(selector.TraversalType, curList);
-            } 
+            }
 
             // Otherwise, try to match each element individually
-            
+
             stack = new Stack<MatchElement>();
 
             foreach (var obj in curList)
             {
                 // We must check everything again when looking for specific depth of children
                 // otherwise - no point - skip em
-                
+
                 IDomElement el = obj as IDomElement;
                 if (el == null || selector.TraversalType != TraversalType.Child && uniqueElements.Contains(el))
                 {
                     continue;
                 }
-                
+
                 stack.Push(new MatchElement(el, 0));
-                
+
                 int matchIndex = 0;
-                
+
                 while (stack.Count != 0)
                 {
                     var current = stack.Pop();
@@ -508,7 +511,7 @@ namespace CsQuery.Engine
                         if (selector.IsDomPositionPseudoSelector &&
                             ((selector.TraversalType == TraversalType.All) ||
                             (selector.TraversalType == TraversalType.Child && selector.ChildDepth == current.Depth + 1) ||
-                            (selector.TraversalType == TraversalType.Descendent && selector.ChildDepth <= current.Depth + 1))) 
+                            (selector.TraversalType == TraversalType.Descendent && selector.ChildDepth <= current.Depth + 1)))
                         {
                             temporaryResults.AddRange(GetPseudoClassMatches(elm, selector));
                             selectorType &= ~SelectorType.PseudoClass;
@@ -523,7 +526,7 @@ namespace CsQuery.Engine
                         {
                             IDomElement child = elm[j] as IDomElement;
 
-                            if (child==null || !uniqueElements.Add(child))
+                            if (child == null || !uniqueElements.Add(child))
                             {
                                 continue;
                             }
@@ -586,7 +589,7 @@ namespace CsQuery.Engine
             {
                 return false;
             }
-            
+
             // Check each selector from easier/more specific to harder. e.g. ID is going to eliminate a lot of things.
 
             if (selector.SelectorType.HasFlag(SelectorType.ID) &&
@@ -606,10 +609,10 @@ namespace CsQuery.Engine
                 return false;
             }
 
-            
-            if ((selector.SelectorType & SelectorType.AttributeValue)>0)
+
+            if ((selector.SelectorType & SelectorType.AttributeValue) > 0)
             {
-                return AttributeSelectors.Matches((IDomElement)obj,selector);
+                return AttributeSelectors.Matches((IDomElement)obj, selector);
             }
 
             if (selector.SelectorType == SelectorType.None)
@@ -637,7 +640,7 @@ namespace CsQuery.Engine
         /// </returns>
 
 
-        protected IEnumerable<IDomObject> GetResultPositionMatches(IEnumerable<IDomObject> list, 
+        protected IEnumerable<IDomObject> GetResultPositionMatches(IEnumerable<IDomObject> list,
             SelectorClause selector)
         {
             // for sibling traversal types the mapping was done already by the Matches function
@@ -645,10 +648,10 @@ namespace CsQuery.Engine
             var sourceList = GetAllChildOrDescendants(selector.TraversalType, list);
 
             return ((IPseudoSelectorFilter)selector.PseudoSelector).Filter(sourceList);
-           
+
         }
 
-        
+
         /// <summary>
         /// Return all child elements matching a DOM-position type selector
         /// </summary>
@@ -658,7 +661,7 @@ namespace CsQuery.Engine
         protected IEnumerable<IDomObject> GetPseudoClassMatches(IDomElement elm, SelectorClause selector)
         {
             IEnumerable<IDomObject> results;
-           
+
             results = ((IPseudoSelectorChild)selector.PseudoSelector).ChildMatches(elm);
 
             foreach (var item in results)
@@ -668,7 +671,7 @@ namespace CsQuery.Engine
 
             // Traverse children if needed
 
-            if (selector.TraversalType == TraversalType.Descendent || 
+            if (selector.TraversalType == TraversalType.Descendent ||
                 selector.TraversalType == TraversalType.All)
             {
                 foreach (var child in elm.ChildElements)
@@ -679,8 +682,8 @@ namespace CsQuery.Engine
                     }
                 }
             }
-          
-        }    
+
+        }
 
         /// <summary>
         /// Return true if an element matches a specific filter.
@@ -699,10 +702,10 @@ namespace CsQuery.Engine
 
         protected bool MatchesPseudoClass(IDomElement element, SelectorClause selector)
         {
-            return ((IPseudoSelectorChild)selector.PseudoSelector).Matches(element);       
+            return ((IPseudoSelectorChild)selector.PseudoSelector).Matches(element);
         }
 
- 
+
         #endregion
 
         #region private methods
@@ -799,7 +802,7 @@ namespace CsQuery.Engine
                     return GetAdjacentElements(list);
                 case TraversalType.Sibling:
                     return GetSiblings(list);
-  
+
                 case TraversalType.Descendent:
                     throw new InvalidOperationException("TraversalType.Descendant should not be found at this point.");
                 case TraversalType.All:
@@ -853,7 +856,7 @@ namespace CsQuery.Engine
                     yield return grandChild;
                 }
             }
-            
+
         }
         protected IEnumerable<IDomElement> GetAdjacentElements(IEnumerable<IDomObject> list)
         {
@@ -883,7 +886,7 @@ namespace CsQuery.Engine
                 }
             }
         }
-        
+
 
 
         #endregion

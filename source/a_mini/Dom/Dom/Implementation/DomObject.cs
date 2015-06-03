@@ -1068,7 +1068,7 @@ namespace CsQuery.Implementation
         {
 
 
-            //throw new MyNotImplementException();
+           
             var mytype = this.GetType();
             return mytype.Name;
             //return Render(OutputFormatters.Default);
@@ -1786,7 +1786,7 @@ namespace CsQuery.Implementation
 
         protected void UpdateDocumentFlags(IDomDocument document)
         {
-            //throw new MyNotImplementException();
+            
             _Document = document;
             SetDocFlags();
             // I think we can get away without resetting children. When removing something from a document,

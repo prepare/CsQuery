@@ -649,33 +649,33 @@ namespace CsQuery.Utility
 
         public static string FromCamelCase(string name)
         {
-            throw new MyNotImplementException();
-            //if (String.IsNullOrEmpty(name))
-            //{
-            //    return "";
-            //}
+            
+            if (String.IsNullOrEmpty(name))
+            {
+                return "";
+            }
 
-            //int pos = 0;
-            //StringBuilder output = new StringBuilder();
+            int pos = 0;
+            StringBuilder output = new StringBuilder();
 
-            //while (pos < name.Length)
-            //{
-            //    char cur = name[pos];
-            //    if (cur >= 'A' && cur <= 'Z')
-            //    {
-            //        if (pos > 0 && name[pos - 1] != '-')
-            //        {
-            //            output.Append("-");
-            //        }
-            //        output.Append(cur.ToLower());
-            //    }
-            //    else
-            //    {
-            //        output.Append(cur);
-            //    }
-            //    pos++;
-            //}
-            //return output.ToString();
+            while (pos < name.Length)
+            {
+                char cur = name[pos];
+                if (cur >= 'A' && cur <= 'Z')
+                {
+                    if (pos > 0 && name[pos - 1] != '-')
+                    {
+                        output.Append("-");
+                    }
+                    output.Append(Char.ToLower(cur)); 
+                }
+                else
+                {
+                    output.Append(cur);
+                }
+                pos++;
+            }
+            return output.ToString();
 
         }
 
